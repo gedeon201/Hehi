@@ -1363,7 +1363,7 @@
 
       function card(it) {
         const photo = it.photo
-          ? `<img src="${it.photo}" alt="${it.name}" loading="lazy">`
+          ? `<img src="${it.photo}" alt="${it.name}" loading="lazy" decoding="async">`
           : `<div class="ph"><div class="disc">${discSVG}</div><div class="lbl">Ảnh món</div></div>`;
         const order = `https://zalo.me/${SHOP.zalo.replace(/\D/g, "")}`;
         return `<article class="item-card">
@@ -1384,7 +1384,7 @@
       function drinkCard(it) {
         const color = it.color || "#D9A57E";
         const photo = it.photo
-          ? `<img src="${it.photo}" alt="${it.name}" loading="lazy">`
+          ? `<img src="${it.photo}" alt="${it.name}" loading="lazy" decoding="async">`
           : `<div class="ph drink"><div class="glass" style="color:${color}">${glassSVG}</div><div class="lbl">Ảnh ly</div></div>`;
         const order = `https://zalo.me/${SHOP.zalo.replace(/\D/g, "")}`;
         return `<article class="item-card">
