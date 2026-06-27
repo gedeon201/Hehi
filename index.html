@@ -93,18 +93,21 @@
         height: 64px;
       }
       .brand {
-        display: flex;
-        align-items: center;
-        gap: 9px;
+        display: inline-flex;
+        align-items: flex-start;
         font-family: var(--serif);
         font-weight: 700;
-        font-size: 25px;
+        font-size: 26px;
+        line-height: 1;
         color: var(--ink);
         letter-spacing: 0.01em;
+        padding: 8px 4px 8px 0;
       }
-      .brand .disc {
-        width: 18px;
-        height: 18px;
+      .brand .brand-disc {
+        width: 15px;
+        height: 15px;
+        margin-left: 3px;
+        margin-top: -4px;
       }
       .nav-links {
         display: flex;
@@ -531,6 +534,12 @@
         font-weight: 600;
         line-height: 1.1;
       }
+      .item-body h3 .star {
+        color: #e8b23a;
+        font-size: 0.62em;
+        vertical-align: middle;
+        margin-left: 2px;
+      }
       .item-body .desc {
         font-size: 13.5px;
         color: var(--ink-2);
@@ -590,11 +599,16 @@
         border-radius: 24px;
         position: relative;
         overflow: hidden;
-        background: radial-gradient(
-          110% 110% at 40% 30%,
-          var(--cream-hi),
-          var(--tan) 160%
-        );
+        background: #f6ecd9;
+        border: 1px solid var(--card-edge);
+      }
+      .story-logo {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 84%;
+        height: auto;
       }
       .story h2 {
         font-family: var(--serif);
@@ -984,9 +998,10 @@
     <!-- NAV -->
     <header class="nav">
       <div class="wrap nav-in">
-        <a href="#top" class="brand">
-          <svg class="disc" viewBox="0 0 100 100"><use href="#disc" /></svg>
-          Hehi
+        <a href="#top" class="brand" aria-label="Hehi — trang chủ">
+          Hehi<svg class="brand-disc" viewBox="0 0 100 100" aria-hidden="true">
+            <use href="#disc" />
+          </svg>
         </a>
         <nav class="nav-links">
           <a href="#menu">Đồ ăn</a>
@@ -1110,12 +1125,45 @@
     <!-- STORY -->
     <section class="story" id="story">
       <div class="wrap story-in">
-        <div class="story-art woven" aria-hidden="true">
-          <svg
-            viewBox="0 0 100 100"
-            style="position: absolute; inset: 14%; width: 72%; height: 72%"
-          >
-            <use href="#disc" />
+        <div class="story-art" aria-hidden="true">
+          <svg class="story-logo" viewBox="0 0 400 240">
+            <text
+              x="200"
+              y="120"
+              font-family="'Cormorant Garamond', Georgia, serif"
+              font-size="96"
+              font-weight="600"
+              fill="#4a2f1b"
+              text-anchor="middle"
+              letter-spacing="-1"
+            >
+              Hehi
+            </text>
+            <use href="#disc" transform="translate(271,61) scale(0.34)" />
+            <text
+              x="200"
+              y="168"
+              font-family="'Be Vietnam Pro', sans-serif"
+              font-size="14"
+              font-weight="600"
+              letter-spacing="8"
+              fill="#7a4a2b"
+              text-anchor="middle"
+            >
+              BÁNH TRÁNG SÀI GÒN
+            </text>
+            <text
+              x="200"
+              y="198"
+              font-family="'Cormorant Garamond', Georgia, serif"
+              font-size="17"
+              font-style="italic"
+              letter-spacing="2"
+              fill="#c75b39"
+              text-anchor="middle"
+            >
+              Hương vị độc quyền
+            </text>
           </svg>
         </div>
         <div>
@@ -1253,16 +1301,16 @@
           cat: "Bánh tráng nướng",
           items: [
             {
-              name: "Bánh tráng nướng",
-              desc: "Trứng, xúc xích, phô mai, mỡ hành, sốt riêng.",
-              price: 25000,
-              photo: "assets/images/banh-trang-nuong.webp",
+              name: "Nướng Truyền Thống",
+              desc: "Trứng, hành, ruốc — nướng giòn thơm.",
+              price: 30000,
+              photo: "",
             },
             {
-              name: "Bánh tráng nướng bò khô",
-              desc: "Bò khô, trứng cút, mỡ hành — giòn thơm.",
-              price: 25000,
-              photo: "",
+              name: "Nướng Đặc Biệt",
+              desc: "Đầy đủ topping: trứng, xúc xích, phô mai, mỡ hành.",
+              price: 30000,
+              photo: "assets/images/banh-trang-nuong.webp",
             },
           ],
         },
@@ -1270,15 +1318,15 @@
           cat: "Bánh mì nướng",
           items: [
             {
-              name: "Bánh mì nướng muối ớt",
-              desc: "Muối ớt cay, pate, mỡ hành, hành phi.",
-              price: 20000,
+              name: "Nướng Muối Ớt",
+              desc: "Bánh mì nướng muối ớt cay, mỡ hành.",
+              price: 30000,
               photo: "",
             },
             {
-              name: "Bánh mì nướng bơ tỏi",
-              desc: "Bơ tỏi giòn rụm, thơm nức.",
-              price: 18000,
+              name: "Nướng Muối Ớt Full Topping",
+              desc: "Muối ớt cay kèm full topping đầy đặn.",
+              price: 35000,
               photo: "",
             },
           ],
@@ -1287,15 +1335,16 @@
           cat: "Bánh tráng chấm",
           items: [
             {
-              name: "Bánh tráng chấm sốt me",
-              desc: "Sốt me chua ngọt, topping đầy đủ.",
-              price: 20000,
+              name: "Chấm Cô Gánh",
+              desc: "Vị chấm cô gánh đặc trưng, ăn là ghiền.",
+              price: 30000,
+              star: true,
               photo: "",
             },
             {
-              name: "Bánh tráng chấm muối nhuyễn",
-              desc: "Muối nhuyễn cay đậm, chấm là ghiền.",
-              price: 20000,
+              name: "Chấm Sốt Tắc Cay",
+              desc: "Sốt tắc chua cay, kèm topping.",
+              price: 30000,
               photo: "",
             },
           ],
@@ -1304,28 +1353,28 @@
           cat: "Combo",
           items: [
             {
-              name: "Khay mix 2 vị",
-              desc: "Hai vị tuỳ chọn trong một khay — hợp ăn cặp.",
-              price: 45000,
-              photo: "assets/images/khay-mix-2-vi.webp",
-            },
-            {
-              name: "Khay mix 4 vị",
-              desc: "Bốn vị đầy khay — hợp ăn nhóm.",
-              price: 80000,
+              name: "Combo Full Vị",
+              desc: "Đủ vị best-seller — hợp nhóm đông.",
+              price: 85000,
               photo: "assets/images/khay-mix-4-vi.webp",
             },
             {
-              name: "Combo nhóm 4 người",
-              desc: "Phần lớn ăn thả ga, kèm đồ uống.",
-              price: 130000,
+              name: "Combo Cuộn",
+              desc: "Tổng hợp các món cuộn được yêu thích.",
+              price: 90000,
               photo: "",
             },
             {
-              name: "Set quà bánh tráng",
-              desc: "Đóng hộp lịch sự, giao tỉnh.",
-              price: 120000,
+              name: "Combo Đặc Biệt",
+              desc: "Phần đặc biệt cho 2–3 người.",
+              price: 75000,
               photo: "",
+            },
+            {
+              name: "Khay Mix Vị",
+              desc: "Khay trộn nhiều vị, ăn cùng cho vui.",
+              price: 65000,
+              photo: "assets/images/khay-mix-2-vi.webp",
             },
           ],
         },
@@ -1333,51 +1382,54 @@
           cat: "Bánh tráng trộn",
           items: [
             {
-              name: "Bánh tráng trộn Hehi",
-              desc: "Tôm khô, bò khô, trứng cút, xoài, rau răm.",
-              price: 25000,
+              name: "Truyền Thống",
+              desc: "Bánh tráng trộn truyền thống, topping đầy đủ.",
+              price: 30000,
               photo: "assets/images/banh-trang-tron.webp",
             },
             {
-              name: "Trộn sợi thập cẩm",
-              desc: "Sợi bánh tráng dai, topping thập cẩm đầy đặn.",
+              name: "Sate Bò / Tép",
+              desc: "Sa tế bò hoặc tép — cay đậm đà.",
+              price: 30000,
+              photo: "",
+            },
+            {
+              name: "Full Topping",
+              desc: "Ngập topping: khô bò, tép, trứng cút, xoài.",
               price: 30000,
               photo: "assets/images/tron-soi-thap-cam.webp",
             },
             {
-              name: "Bánh tráng trộn sốt hoàng kim",
-              desc: "Sốt trứng muối hoàng kim béo bùi, lạ miệng.",
+              name: "Phơi sương trộn sốt me",
+              desc: "Phơi sương dẻo trộn sốt me chua ngọt.",
               price: 30000,
-              photo: "assets/images/sot-hoang-kim.webp",
+              photo: "",
             },
             {
-              name: "Bánh tráng trộn sốt nhiệt đới",
-              desc: "Sốt chua ngọt vị nhiệt đới, ăn là mê.",
+              name: "Phơi sương trộn tép rim",
+              desc: "Phơi sương trộn tép rim mặn ngọt.",
               price: 35000,
-              photo: "assets/images/sot-nhiet-doi.webp",
-            },
-            {
-              name: "Bánh tráng trộn bơ",
-              desc: "Bơ béo, sốt me chua dịu, hành phi thơm.",
-              price: 25000,
+              star: true,
               photo: "",
             },
             {
-              name: "Bánh tráng trộn muối tắc",
-              desc: "Chua cay đậm vị, tắc tươi vắt tay.",
-              price: 20000,
+              name: "Phơi sương trộn sa tế bò tỏi",
+              desc: "Phơi sương trộn sa tế bò tỏi thơm cay.",
+              price: 30000,
+              star: true,
+              photo: "assets/images/phoi-suong-sate-tom.webp",
+            },
+            {
+              name: "Phơi sương trộn tắc hành phi",
+              desc: "Phơi sương trộn tắc tươi, hành phi giòn.",
+              price: 30000,
+              star: true,
               photo: "",
             },
             {
-              name: "Bánh tráng trộn khô bò",
-              desc: "Nhiều khô bò, topping đầy đặn.",
-              price: 28000,
-              photo: "",
-            },
-            {
-              name: "Bánh tráng trộn mỡ hành",
-              desc: "Mỡ hành thơm, đơn giản mà cuốn.",
-              price: 18000,
+              name: "Phơi sương trộn mỡ hành",
+              desc: "Phơi sương trộn mỡ hành béo thơm.",
+              price: 30000,
               photo: "",
             },
           ],
@@ -1386,93 +1438,96 @@
           cat: "Bánh tráng cuộn",
           items: [
             {
-              name: "Phơi sương muối béo",
-              desc: "Bánh tráng phơi sương dẻo, muối béo đặc trưng.",
+              name: "Sốt Me",
+              desc: "Cuộn chấm sốt me chua ngọt.",
               price: 30000,
+              photo: "",
+            },
+            {
+              name: "Sốt Kim Quất",
+              desc: "Cuộn sốt kim quất chua thanh.",
+              price: 30000,
+              photo: "",
+            },
+            {
+              name: "Sốt Kiều Mạch Chesse",
+              desc: "Cuộn kiều mạch sốt phô mai béo.",
+              price: 30000,
+              star: true,
+              photo: "",
+            },
+            {
+              name: "Sốt Hoa Quả",
+              desc: "Cuộn sốt hoa quả nhiệt đới, lạ miệng.",
+              price: 30000,
+              photo: "assets/images/sot-nhiet-doi.webp",
+            },
+            {
+              name: "Sốt Hoàng Kim",
+              desc: "Cuộn sốt trứng muối hoàng kim béo bùi.",
+              price: 30000,
+              photo: "assets/images/sot-hoang-kim.webp",
+            },
+            {
+              name: "Sốt Phomai Cam Đào",
+              desc: "Cuộn phô mai cam đào thơm béo.",
+              price: 35000,
+              star: true,
+              photo: "",
+            },
+            {
+              name: "Sốt Xí Muội Cay",
+              desc: "Cuộn sốt xí muội chua cay.",
+              price: 33000,
+              star: true,
+              photo: "",
+            },
+            {
+              name: "Phơi sương cuộn muối bò",
+              desc: "Phơi sương cuộn muối bò đậm vị.",
+              price: 33000,
+              photo: "",
+            },
+            {
+              name: "Hoàng Kim Chà Bông",
+              desc: "Cuộn hoàng kim phủ chà bông.",
+              price: 35000,
+              photo: "",
+            },
+            {
+              name: "Sốt nava trứng muối",
+              desc: "Cuộn sốt nava trứng muối béo.",
+              price: 33000,
+              photo: "",
+            },
+            {
+              name: "Sốt muối béo",
+              desc: "Cuộn sốt muối béo đặc trưng.",
+              price: 35000,
               photo: "assets/images/phoi-suong-muoi-beo.webp",
             },
             {
-              name: "Phơi sương sa tế tôm",
-              desc: "Phơi sương cuộn sa tế tôm cay thơm.",
-              price: 30000,
-              photo: "assets/images/phoi-suong-sate-tom.webp",
-            },
-            {
-              name: "Bánh tráng cuộn tôm khô",
-              desc: "Cuộn sẵn gọn tay, chấm sốt me.",
-              price: 20000,
+              name: "Kiều Mạch Chà Bông",
+              desc: "Cuộn kiều mạch phủ chà bông.",
+              price: 35000,
               photo: "",
             },
             {
-              name: "Bánh tráng cuộn bơ trứng",
-              desc: "Bơ, trứng cút, ruốc — béo vừa.",
-              price: 22000,
+              name: "Phomai Cam Đào Chà Bông",
+              desc: "Phô mai cam đào kèm chà bông.",
+              price: 35000,
               photo: "",
             },
             {
-              name: "Bánh tráng cuộn thịt heo",
-              desc: "Thịt luộc, rau sống, chấm mắm nêm.",
-              price: 28000,
+              name: "Rong Biển Sốt Phomai Cay",
+              desc: "Rong biển sốt phô mai cay nồng.",
+              price: 35000,
               photo: "",
             },
             {
-              name: "Bánh tráng cuộn chả lụa",
-              desc: "Chả lụa, dưa leo, rau răm.",
-              price: 22000,
-              photo: "",
-            },
-            {
-              name: "Bánh tráng cuộn xúc xích",
-              desc: "Xúc xích nướng, sốt mayonnaise.",
-              price: 22000,
-              photo: "",
-            },
-            {
-              name: "Bánh tráng cuộn trứng cút",
-              desc: "Trứng cút, ruốc, hành phi.",
-              price: 20000,
-              photo: "",
-            },
-            {
-              name: "Bánh tráng cuộn ruốc khô",
-              desc: "Ruốc khô đậm vị, mỡ hành.",
-              price: 20000,
-              photo: "",
-            },
-            {
-              name: "Bánh tráng cuộn rau răm",
-              desc: "Thanh nhẹ, nhiều rau, chấm me.",
-              price: 18000,
-              photo: "",
-            },
-            {
-              name: "Bánh tráng cuộn phô mai",
-              desc: "Phô mai kéo sợi, béo ngậy.",
-              price: 25000,
-              photo: "",
-            },
-            {
-              name: "Bánh tráng cuộn cá cơm",
-              desc: "Cá cơm rim, mặn ngọt vừa miệng.",
-              price: 24000,
-              photo: "",
-            },
-            {
-              name: "Bánh tráng cuộn muối ớt",
-              desc: "Muối ớt cay, đơn giản mà gây nghiện.",
-              price: 18000,
-              photo: "",
-            },
-            {
-              name: "Bánh tráng cuộn sốt me",
-              desc: "Sốt me chua ngọt, topping đầy.",
-              price: 20000,
-              photo: "",
-            },
-            {
-              name: "Bánh tráng cuộn thập cẩm",
-              desc: "Đủ topping trong một cuộn — no nê.",
-              price: 30000,
+              name: "Bánh Tráng Phơi Sương Cuộn Tóp Mỡ",
+              desc: "Phơi sương cuộn tóp mỡ giòn rụm.",
+              price: 40000,
               photo: "",
             },
           ],
@@ -1544,10 +1599,13 @@
         const photo = it.photo
           ? `<img src="${it.photo}" alt="${it.name}" loading="lazy" decoding="async">`
           : `<div class="ph"><div class="disc">${discSVG}</div><div class="lbl">Ảnh món</div></div>`;
+        const star = it.star
+          ? ' <span class="star" title="Món nổi bật" aria-label="Món nổi bật">★</span>'
+          : "";
         return `<article class="item-card">
     <div class="item-photo">${photo}</div>
     <div class="item-body">
-      <h3>${it.name}</h3>
+      <h3>${it.name}${star}</h3>
       <p class="desc">${it.desc}</p>
       <div class="item-foot">
         <span class="price">${vnd(it.price)}</span>
@@ -1692,6 +1750,25 @@
         const y = menuSec.getBoundingClientRect().top + window.scrollY - 64;
         window.scrollTo({ top: y, behavior: "smooth" });
       });
+
+      /* ---------- cuộn mượt cho link trong trang, KHÔNG gắn hash vào URL ---------- */
+      /* tránh bug: refresh lại nhảy về mục đã từng bấm (vd #drinks) */
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest('a[href^="#"]');
+        if (!a) return;
+        const id = a.getAttribute("href").slice(1);
+        const el = id ? document.getElementById(id) : null;
+        if (!el) return;
+        e.preventDefault();
+        const y = id === "top" ? 0 : el.getBoundingClientRect().top + window.scrollY - 64;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      });
+      // tải trang: bỏ hash cũ còn sót và luôn bắt đầu từ đầu trang
+      if (location.hash) {
+        history.replaceState(null, "", location.pathname + location.search);
+        window.scrollTo(0, 0);
+      }
     </script>
   </body>
 </html>
