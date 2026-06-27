@@ -1,0 +1,1466 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hehi · Bánh Tráng Sài Gòn — Hương vị độc quyền</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --cream: #f3e9d5;
+        --cream-hi: #f8f1e2;
+        --paper: #fbf6ea;
+        --card: #faf3e3;
+        --card-edge: #e7d8bc;
+        --ink: #2e2018;
+        --ink-2: #6b5544;
+        --ink-3: #9a856e;
+        --terra: #c2674a;
+        --terra-deep: #a8512f;
+        --tan: #d9a57e;
+        --tan-2: #c98b5e;
+        --line: #e0cfb0;
+        --serif: "Cormorant Garamond", Georgia, serif;
+        --sans: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+        --maxw: 1180px;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--cream);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: 16px;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      ::selection {
+        background: rgba(194, 103, 74, 0.22);
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      .wrap {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 0 28px;
+      }
+
+      /* woven texture utility */
+      .woven {
+        background-image:
+          repeating-linear-gradient(
+            45deg,
+            rgba(168, 81, 47, 0.05) 0 1px,
+            transparent 1px 9px
+          ),
+          repeating-linear-gradient(
+            -45deg,
+            rgba(168, 81, 47, 0.05) 0 1px,
+            transparent 1px 9px
+          );
+      }
+
+      /* ===== NAV ===== */
+      header.nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(243, 233, 213, 0.86);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav-in {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 25px;
+        color: var(--ink);
+        letter-spacing: 0.01em;
+      }
+      .brand .disc {
+        width: 18px;
+        height: 18px;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+      .nav-links a {
+        font-size: 14px;
+        color: var(--ink-2);
+        font-weight: 500;
+      }
+      .nav-links a:hover {
+        color: var(--terra-deep);
+      }
+      .pill {
+        font-size: 13.5px;
+        font-weight: 600;
+        color: #fff;
+        background: var(--terra);
+        padding: 9px 18px;
+        border-radius: 999px;
+        transition: background 0.2s;
+      }
+      .pill:hover {
+        background: var(--terra-deep);
+      }
+      .nav-toggle {
+        display: none;
+      }
+
+      /* ===== HERO ===== */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        padding: 92px 0 84px;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          120% 90% at 50% -10%,
+          var(--cream-hi),
+          transparent 60%
+        );
+      }
+      .hero-disc {
+        position: absolute;
+        right: -120px;
+        top: 40px;
+        width: 360px;
+        height: 360px;
+        opacity: 0.5;
+        pointer-events: none;
+      }
+      .hero-disc.l {
+        left: -140px;
+        right: auto;
+        top: auto;
+        bottom: -120px;
+        width: 320px;
+        height: 320px;
+        opacity: 0.4;
+      }
+      .hero-in {
+        position: relative;
+        z-index: 1;
+      }
+      .eyebrow {
+        font-size: 12.5px;
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+        color: var(--terra-deep);
+        font-weight: 600;
+        margin-bottom: 22px;
+      }
+      .wordmark {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: clamp(72px, 15vw, 150px);
+        line-height: 0.92;
+        color: var(--ink);
+        letter-spacing: 0.005em;
+        display: inline-flex;
+        align-items: flex-start;
+        justify-content: center;
+      }
+      .wordmark .i-wrap {
+        position: relative;
+        display: inline-block;
+      }
+      .wordmark .i-wrap .tittle {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 0.04em;
+        width: 0.62em;
+        height: 0.62em;
+      }
+      .wordmark .i-stem::after {
+        content: "i";
+      }
+      .sub {
+        font-family: var(--sans);
+        font-size: 14px;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: var(--ink-2);
+        font-weight: 600;
+        margin-top: 18px;
+      }
+      .tagline {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: clamp(22px, 3.4vw, 30px);
+        color: var(--terra);
+        margin-top: 10px;
+      }
+      .hero-copy {
+        max-width: 46ch;
+        margin: 24px auto 0;
+        color: var(--ink-2);
+        font-size: 16.5px;
+      }
+      .hero-cta {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 34px;
+      }
+      .btn {
+        font-size: 15px;
+        font-weight: 600;
+        padding: 14px 28px;
+        border-radius: 999px;
+        cursor: pointer;
+        border: 1.5px solid transparent;
+        transition: all 0.2s;
+      }
+      .btn-primary {
+        background: var(--terra);
+        color: #fff;
+      }
+      .btn-primary:hover {
+        background: var(--terra-deep);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: var(--ink);
+        border-color: var(--card-edge);
+      }
+      .btn-ghost:hover {
+        border-color: var(--terra);
+        color: var(--terra-deep);
+      }
+
+      /* woven divider */
+      .divider {
+        height: 1px;
+        background: var(--line);
+        position: relative;
+        max-width: var(--maxw);
+        margin: 0 auto;
+      }
+      .divider::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 34px;
+        height: 34px;
+        background: var(--cream);
+        background-image:
+          repeating-linear-gradient(
+            45deg,
+            var(--tan) 0 1px,
+            transparent 1px 5px
+          ),
+          repeating-linear-gradient(
+            -45deg,
+            var(--tan) 0 1px,
+            transparent 1px 5px
+          );
+        border: 1px solid var(--line);
+        border-radius: 50%;
+      }
+
+      /* ===== TRUST STRIP ===== */
+      .trust {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        padding: 54px 0;
+      }
+      .trust .item {
+        text-align: center;
+        padding: 0 14px;
+      }
+      .trust .ic {
+        width: 42px;
+        height: 42px;
+        margin: 0 auto 12px;
+        color: var(--terra);
+      }
+      .trust h3 {
+        font-family: var(--serif);
+        font-size: 23px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .trust p {
+        font-size: 14px;
+        color: var(--ink-2);
+      }
+
+      /* ===== SECTION HEAD ===== */
+      .section {
+        padding: 72px 0;
+      }
+      .sec-head {
+        text-align: center;
+        margin-bottom: 46px;
+      }
+      .sec-head .eyebrow {
+        margin-bottom: 12px;
+      }
+      .sec-head h2 {
+        font-family: var(--serif);
+        font-weight: 600;
+        font-size: clamp(38px, 6vw, 56px);
+        line-height: 1.04;
+        color: var(--ink);
+      }
+      .sec-head p {
+        color: var(--ink-2);
+        margin-top: 12px;
+        font-size: 16px;
+      }
+
+      /* category eyebrow */
+      .cat {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin: 46px 0 22px;
+      }
+      .cat:first-of-type {
+        margin-top: 0;
+      }
+      .cat span {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: 27px;
+        color: var(--terra-deep);
+        white-space: nowrap;
+      }
+      .cat::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--line);
+      }
+      .cat-block + .cat-block {
+        margin-top: 44px;
+      }
+
+      /* ===== FILTER CHIPS (dính dưới nav) ===== */
+      .menu-filter {
+        position: sticky;
+        top: 63px;
+        z-index: 40;
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding: 14px 0;
+        margin-bottom: 6px;
+        background: rgba(243, 233, 213, 0.92);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+        scrollbar-width: none;
+      }
+      .menu-filter::-webkit-scrollbar {
+        display: none;
+      }
+      .chip {
+        flex: none;
+        font-family: var(--sans);
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--ink-2);
+        background: var(--card);
+        border: 1.5px solid var(--card-edge);
+        padding: 9px 17px;
+        border-radius: 999px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition:
+          background 0.2s,
+          color 0.2s,
+          border-color 0.2s;
+      }
+      .chip:hover {
+        border-color: var(--terra);
+        color: var(--terra-deep);
+      }
+      .chip[aria-selected="true"] {
+        background: var(--terra);
+        border-color: var(--terra);
+        color: #fff;
+      }
+      .chip .n {
+        margin-left: 6px;
+        font-weight: 500;
+        font-size: 12.5px;
+        opacity: 0.72;
+        font-variant-numeric: tabular-nums;
+      }
+      .chip:focus-visible {
+        outline: 2px solid var(--terra-deep);
+        outline-offset: 2px;
+      }
+
+      /* ===== MENU GRID ===== */
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 26px;
+      }
+      .item-card {
+        background: var(--card);
+        border: 1px solid var(--card-edge);
+        border-radius: 20px;
+        overflow: hidden;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+        display: flex;
+        flex-direction: column;
+      }
+      .item-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 36px -18px rgba(46, 32, 24, 0.4);
+      }
+      .item-photo {
+        aspect-ratio: 4/3;
+        position: relative;
+        overflow: hidden;
+        background: var(--cream-hi);
+      }
+      .item-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      /* placeholder disc when no photo */
+      .ph {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(
+          120% 120% at 50% 30%,
+          var(--cream-hi),
+          var(--cream)
+        );
+      }
+      .ph .disc {
+        width: 52%;
+        aspect-ratio: 1;
+        opacity: 0.85;
+        filter: saturate(0.85);
+      }
+      .ph .disc svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .ph .lbl {
+        position: absolute;
+        bottom: 12px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+      }
+      /* placeholder ly cho đồ uống */
+      .ph.drink {
+        background: radial-gradient(
+          120% 120% at 50% 16%,
+          var(--cream-hi),
+          var(--cream)
+        );
+      }
+      .ph .glass {
+        width: 44%;
+        aspect-ratio: 80 / 104;
+        filter: drop-shadow(0 6px 10px rgba(46, 32, 24, 0.12));
+      }
+      .ph .glass svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .item-body {
+        padding: 18px 20px 20px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .item-body h3 {
+        font-family: var(--serif);
+        font-size: 25px;
+        font-weight: 600;
+        line-height: 1.1;
+      }
+      .item-body .desc {
+        font-size: 13.5px;
+        color: var(--ink-2);
+        margin-top: 6px;
+        flex: 1;
+      }
+      .item-foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 16px;
+      }
+      .price {
+        font-family: var(--sans);
+        font-weight: 700;
+        font-size: 19px;
+        color: var(--terra-deep);
+      }
+      .price small {
+        font-weight: 500;
+        font-size: 13px;
+        color: var(--ink-3);
+      }
+      .order-mini {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--terra);
+        border: 1.5px solid var(--card-edge);
+        padding: 7px 15px;
+        border-radius: 999px;
+        transition: all 0.2s;
+      }
+      .order-mini:hover {
+        background: var(--terra);
+        color: #fff;
+        border-color: var(--terra);
+      }
+
+      /* ===== STORY ===== */
+      .story {
+        background: var(--paper);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .story-in {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        padding: 80px 0;
+      }
+      .story-art {
+        aspect-ratio: 1;
+        border-radius: 24px;
+        position: relative;
+        overflow: hidden;
+        background: radial-gradient(
+          110% 110% at 40% 30%,
+          var(--cream-hi),
+          var(--tan) 160%
+        );
+      }
+      .story h2 {
+        font-family: var(--serif);
+        font-weight: 600;
+        font-size: clamp(34px, 5vw, 48px);
+        line-height: 1.06;
+        margin-bottom: 18px;
+      }
+      .story p {
+        color: var(--ink-2);
+        margin-bottom: 14px;
+        font-size: 16px;
+      }
+      .story .eyebrow {
+        margin-bottom: 14px;
+      }
+
+      /* ===== CONTACT ===== */
+      .contact {
+        text-align: center;
+      }
+      .contact .channels {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 34px;
+      }
+      .chan {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        background: var(--card);
+        border: 1px solid var(--card-edge);
+        border-radius: 16px;
+        padding: 18px 26px;
+        min-width: 210px;
+        text-align: left;
+        transition: all 0.2s;
+      }
+      .chan:hover {
+        border-color: var(--terra);
+        transform: translateY(-3px);
+      }
+      .chan .ci {
+        width: 38px;
+        height: 38px;
+        flex: none;
+        color: var(--terra);
+      }
+      .chan .k {
+        font-size: 12px;
+        color: var(--ink-3);
+        letter-spacing: 0.04em;
+      }
+      .chan .v {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .info {
+        display: flex;
+        gap: 40px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 40px;
+        color: var(--ink-2);
+        font-size: 15px;
+      }
+      .info b {
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      /* ===== FOOTER ===== */
+      footer.foot {
+        background: var(--ink);
+        color: var(--cream);
+        text-align: center;
+        padding: 48px 0 40px;
+        margin-top: 80px;
+      }
+      footer.foot .fmark {
+        font-family: var(--serif);
+        font-size: 34px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      footer.foot .ft {
+        font-style: italic;
+        font-family: var(--serif);
+        color: var(--tan);
+        font-size: 18px;
+        margin-top: 4px;
+      }
+      footer.foot .fcopy {
+        font-size: 13px;
+        color: #b9a584;
+        margin-top: 22px;
+      }
+
+      @media (max-width: 880px) {
+        .menu-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .trust {
+          grid-template-columns: 1fr;
+          gap: 34px;
+          padding: 44px 0;
+        }
+        .story-in {
+          grid-template-columns: 1fr;
+          gap: 34px;
+          padding: 56px 0;
+        }
+        .story-art {
+          max-width: 360px;
+          margin: 0 auto;
+          width: 100%;
+        }
+        .nav-links {
+          display: none;
+        }
+      }
+      @media (max-width: 560px) {
+        .wrap {
+          padding: 0 20px;
+        }
+        .menu-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          padding: 64px 0 60px;
+        }
+        .info {
+          gap: 20px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+          scroll-behavior: auto;
+        }
+      }
+    </style>
+  </head>
+  <body class="woven">
+    <!-- woven bánh-tráng disc, reusable -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <g id="disc">
+          <circle
+            cx="50"
+            cy="50"
+            r="46"
+            fill="#E8C49C"
+            stroke="#C98B5E"
+            stroke-width="2"
+          />
+          <clipPath id="cc"><circle cx="50" cy="50" r="45" /></clipPath>
+          <g
+            clip-path="url(#cc)"
+            stroke="#C98B5E"
+            stroke-width="1"
+            opacity=".55"
+          >
+            <path d="M10 30H90M10 42H90M10 54H90M10 66H90M10 78H90M10 18H90" />
+            <path d="M30 10V90M42 10V90M54 10V90M66 10V90M78 10V90M18 10V90" />
+          </g>
+          <g clip-path="url(#cc)" fill="#B97A4E" opacity=".7">
+            <circle cx="30" cy="36" r="1.6" />
+            <circle cx="64" cy="28" r="1.4" />
+            <circle cx="44" cy="60" r="1.6" />
+            <circle cx="70" cy="64" r="1.4" />
+            <circle cx="56" cy="46" r="1.3" />
+            <circle cx="34" cy="70" r="1.4" />
+          </g>
+        </g>
+        <!-- ly đồ uống: màu nước = currentColor (đặt qua style color của card) -->
+        <symbol id="glass" viewBox="0 0 80 104">
+          <!-- nước (trám theo currentColor) -->
+          <path
+            d="M20 40 L62 40 L58 90 Q57 94.5 52 95 L28 95 Q23 94.5 22 90 Z"
+            fill="currentColor"
+          />
+          <!-- ánh nước trên mặt -->
+          <path d="M20 40 L62 40 L61.4 46 L20.6 46 Z" fill="#fff" opacity=".22" />
+          <!-- đá -->
+          <rect
+            x="25" y="48" width="15" height="15" rx="3"
+            fill="#fff" opacity=".42"
+            transform="rotate(-12 32 55)"
+          />
+          <rect
+            x="40" y="58" width="14" height="14" rx="3"
+            fill="#fff" opacity=".34"
+            transform="rotate(11 47 65)"
+          />
+          <rect
+            x="30" y="68" width="12" height="12" rx="3"
+            fill="#fff" opacity=".3"
+            transform="rotate(18 36 74)"
+          />
+          <!-- thành ly -->
+          <path
+            d="M16 12 L64 12 L58 90 Q57 95 52 95 L28 95 Q23 95 22 90 Z"
+            fill="none" stroke="#C98B5E" stroke-width="2"
+          />
+          <!-- miệng ly -->
+          <ellipse
+            cx="40" cy="12" rx="24" ry="4.6"
+            fill="#fff" fill-opacity=".5"
+            stroke="#C98B5E" stroke-width="2"
+          />
+          <!-- ống hút -->
+          <rect
+            x="44" y="-2" width="7" height="58" rx="3.5"
+            fill="#C2674A"
+            transform="rotate(14 47 27)"
+          />
+        </symbol>
+      </defs>
+    </svg>
+
+    <!-- NAV -->
+    <header class="nav">
+      <div class="wrap nav-in">
+        <a href="#top" class="brand">
+          <svg class="disc" viewBox="0 0 100 100"><use href="#disc" /></svg>
+          Hehi
+        </a>
+        <nav class="nav-links">
+          <a href="#menu">Đồ ăn</a>
+          <a href="#drinks">Đồ uống</a>
+          <a href="#story">Về Hehi</a>
+          <a href="#contact">Liên hệ</a>
+          <a class="pill" id="nav-order" href="#contact">Đặt qua Zalo</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <svg class="hero-disc" viewBox="0 0 100 100" aria-hidden="true">
+        <use href="#disc" />
+      </svg>
+      <svg class="hero-disc l" viewBox="0 0 100 100" aria-hidden="true">
+        <use href="#disc" />
+      </svg>
+      <div class="wrap hero-in">
+        <div class="eyebrow">Bánh tráng Sài Gòn</div>
+        <h1 class="wordmark">
+          Heh<span class="i-wrap"
+            ><span class="i-stem"></span
+            ><svg class="tittle" viewBox="0 0 100 100" aria-hidden="true">
+              <use href="#disc" /></svg
+          ></span>
+        </h1>
+        <div class="tagline">Hương vị độc quyền</div>
+        <p class="hero-copy">
+          Bánh tráng trộn, cuốn và chấm làm tươi mỗi ngày — công thức riêng của
+          Hehi, topping đầy đặn, kèm đồ uống pha lạnh đã miệng.
+        </p>
+        <div class="hero-cta">
+          <a href="#menu" class="btn btn-primary">Xem đồ ăn</a>
+          <a href="#drinks" class="btn btn-ghost">Xem đồ uống</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- TRUST -->
+    <div class="wrap">
+      <div class="trust">
+        <div class="item">
+          <svg
+            class="ic"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          >
+            <path d="M12 2v6M12 8c-3 0-5 2-5 5s2 7 5 7 5-4 5-7-2-5-5-5z" />
+          </svg>
+          <h3>Tươi mỗi ngày</h3>
+          <p>Trộn theo từng phần, nguyên liệu nhập trong ngày.</p>
+        </div>
+        <div class="item">
+          <svg
+            class="ic"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          >
+            <path
+              d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 21l-4.9 2.6.9-5.5-4-3.9 5.5-.8z"
+            />
+          </svg>
+          <h3>Công thức độc quyền</h3>
+          <p>Sốt me, muối nhuyễn và topping pha riêng của Hehi.</p>
+        </div>
+        <div class="item">
+          <svg
+            class="ic"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          >
+            <path
+              d="M3 7h13v8H3zM16 10h4l1 3v2h-5zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM18 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+            />
+          </svg>
+          <h3>Gói kỹ, giao xa</h3>
+          <p>Đóng hộp chắc chắn, giữ giòn — gửi tỉnh được.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- MENU -->
+    <section class="section" id="menu">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="eyebrow">Thực đơn</div>
+          <h2>Các món của Hehi</h2>
+          <p>Giá đã bao gồm topping. Chạm “Đặt” để nhắn nhanh qua Zalo.</p>
+        </div>
+        <div id="menu-filter" class="menu-filter" role="tablist" aria-label="Lọc theo danh mục"></div>
+        <div id="menu-root"></div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- DRINKS -->
+    <section class="section" id="drinks">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="eyebrow">Đồ uống</div>
+          <h2>Uống gì cho đã miệng</h2>
+          <p>Pha lạnh từng ly, nhiều đá — chua mát “chữa cháy” cho món cay.</p>
+        </div>
+        <div id="drinks-root"></div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="story" id="story">
+      <div class="wrap story-in">
+        <div class="story-art woven" aria-hidden="true">
+          <svg
+            viewBox="0 0 100 100"
+            style="position: absolute; inset: 14%; width: 72%; height: 72%"
+          >
+            <use href="#disc" />
+          </svg>
+        </div>
+        <div>
+          <div class="eyebrow">Về Hehi</div>
+          <h2>Một chút Sài Gòn trong từng bịch bánh tráng</h2>
+          <p>
+            Hehi bắt đầu từ căn bếp nhỏ với món bánh tráng trộn mà bạn bè ăn một
+            lần là nhớ. Chúng tôi giữ nguyên cái vị đường phố ấy — chua, cay,
+            mặn, béo cân bằng — và làm tươi từng phần.
+          </p>
+          <p>
+            Không phẩm màu, không làm sẵn để qua ngày. Chỉ là bánh tráng ngon,
+            topping thật, gói ghém tử tế để mang tới tận tay bạn.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="eyebrow">Liên hệ &amp; đặt món</div>
+          <h2>Nhắn Hehi một tiếng nhé</h2>
+          <p>Đặt nhanh qua Zalo hoặc gọi trực tiếp — Hehi gói và giao ngay.</p>
+        </div>
+        <div class="channels">
+          <a class="chan" id="c-phone" href="#">
+            <svg
+              class="ci"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+            >
+              <path
+                d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"
+              />
+            </svg>
+            <span
+              ><span class="k">Gọi điện</span><br /><span class="v" id="v-phone"
+                >0900 000 000</span
+              ></span
+            >
+          </a>
+          <a class="chan" id="c-zalo" href="#" target="_blank" rel="noopener">
+            <svg
+              class="ci"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="6" />
+              <path d="M8 9h5M8 9l4 6h-4M16 9v6" />
+            </svg>
+            <span
+              ><span class="k">Nhắn Zalo</span><br /><span class="v"
+                >Đặt nhanh</span
+              ></span
+            >
+          </a>
+          <a class="chan" id="c-fb" href="#" target="_blank" rel="noopener">
+            <svg
+              class="ci"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+            >
+              <path d="M14 8h2V5h-2c-2 0-3 1-3 3v2H9v3h2v6h3v-6h2l1-3h-3V8z" />
+            </svg>
+            <span
+              ><span class="k">Facebook</span><br /><span class="v"
+                >Hehi</span
+              ></span
+            >
+          </a>
+        </div>
+        <div class="info">
+          <div>📍 <b id="v-addr">Quận 1, TP. Hồ Chí Minh</b></div>
+          <div>🕙 <b id="v-hours">9:00 – 21:00 mỗi ngày</b></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="foot">
+      <div class="wrap">
+        <div class="fmark">
+          <svg
+            class="disc"
+            style="width: 30px; height: 30px"
+            viewBox="0 0 100 100"
+          >
+            <use href="#disc" />
+          </svg>
+          Hehi
+        </div>
+        <div class="ft">Hương vị độc quyền</div>
+        <div class="fcopy">© 2026 Hehi · Bánh Tráng Sài Gòn</div>
+      </div>
+    </footer>
+
+    <script>
+      /* ============================================================
+   CHỈNH SỬA Ở ĐÂY — thông tin shop & thực đơn (không cần đụng HTML)
+   - photo: dán URL ảnh thật để hiện ảnh; để "" sẽ dùng ảnh đĩa bánh tráng mặc định
+   - price: số tiền (đồng)
+   ============================================================ */
+      const SHOP = {
+        phone: "0900000000", // số gọi & Zalo
+        zalo: "0900000000", // số/đường dẫn Zalo (vd "0900000000" hoặc "zalo-username")
+        facebook: "https://facebook.com/", // link trang Facebook
+        address: "Quận 1, TP. Hồ Chí Minh",
+        hours: "9:00 – 21:00 mỗi ngày",
+      };
+
+      const MENU = [
+        {
+          cat: "Bánh tráng nướng",
+          items: [
+            {
+              name: "Bánh tráng nướng đặc biệt",
+              desc: "Trứng, xúc xích, phô mai, mỡ hành, sốt riêng.",
+              price: 25000,
+              photo: "assets/images/2aOboQgVsLw3F32IQBzqDK7S5PioFT89F6JGkGu0.jpg",
+            },
+            {
+              name: "Bánh tráng nướng bò khô",
+              desc: "Bò khô, trứng cút, mỡ hành — giòn thơm.",
+              price: 25000,
+              photo: "assets/images/2aOboQgVsLxJ5LAQWpxxE7HSjdp1OHsvquosiE4G.jpg",
+            },
+          ],
+        },
+        {
+          cat: "Bánh mì nướng",
+          items: [
+            {
+              name: "Bánh mì nướng muối ớt",
+              desc: "Muối ớt cay, pate, mỡ hành, hành phi.",
+              price: 20000,
+              photo: "assets/images/2aOboQgVsM0FWxmrHPWHXOBGfAHl3ykKm8nEXupE.jpg",
+            },
+            {
+              name: "Bánh mì nướng bơ tỏi",
+              desc: "Bơ tỏi giòn rụm, thơm nức.",
+              price: 18000,
+              photo: "assets/images/2aOboQgVsM0Rh4UknRtEl4aIi1fgnQOUFAAWdavQ.jpg",
+            },
+          ],
+        },
+        {
+          cat: "Bánh tráng chấm",
+          items: [
+            {
+              name: "Bánh tráng chấm sốt me",
+              desc: "Sốt me chua ngọt, topping đầy đủ.",
+              price: 20000,
+              photo: "assets/images/2aOboQgVsM2UBnSSyFLAebNIjMsCQsiEkeblkxPc.jpg",
+            },
+            {
+              name: "Bánh tráng chấm muối nhuyễn",
+              desc: "Muối nhuyễn cay đậm, chấm là ghiền.",
+              price: 20000,
+              photo: "assets/images/2aOboQgVvGFIFGppfvGZPLtjsVVHGh0i2sKdErwW.jpg",
+            },
+          ],
+        },
+        {
+          cat: "Combo",
+          items: [
+            {
+              name: "Combo Hehi 2 món",
+              desc: "Hai món tuỳ chọn — hợp ăn cặp.",
+              price: 45000,
+              photo: "assets/images/2aOboQgVvVSdPvgChM1cDMQYGmkzjn5C9CGJumLw.jpg",
+            },
+            {
+              name: "Combo Hehi 3 món",
+              desc: "Ba món best-seller — hợp ăn nhóm.",
+              price: 70000,
+              photo: "assets/images/2aOboQgVvctvZw37ZeDbqCuCpJh68kAjM2JkwPcu.jpg",
+            },
+            {
+              name: "Combo nhóm 4 người",
+              desc: "Phần lớn ăn thả ga, kèm đồ uống.",
+              price: 130000,
+              photo: "assets/images/2aOboQgVw0f1oMLuoiO0JF1xi0ZUmRvl1oNEX248.jpg",
+            },
+            {
+              name: "Set quà bánh tráng",
+              desc: "Đóng hộp lịch sự, giao tỉnh.",
+              price: 120000,
+              photo: "assets/images/2aOboQgVwG95H2JmGbUQiq0Xt2nYx2SWB8SEjbrU.jpg",
+            },
+          ],
+        },
+        {
+          cat: "Bánh tráng trộn",
+          items: [
+            {
+              name: "Bánh tráng trộn Hehi",
+              desc: "Tôm khô, bò khô, trứng cút, xoài, rau răm.",
+              price: 25000,
+              photo: "assets/images/2aOboQgVweZXTT482WuAv8x1rD2d5HDAim3UcqBs.jpg",
+            },
+            {
+              name: "Bánh tráng trộn bơ",
+              desc: "Bơ béo, sốt me chua dịu, hành phi thơm.",
+              price: 25000,
+              photo: "assets/images/2aOboQgVwz7b5idonD1S2FEuF1eVSDGnLlWxGbSq.jpg",
+            },
+            {
+              name: "Bánh tráng trộn muối tắc",
+              desc: "Chua cay đậm vị, tắc tươi vắt tay.",
+              price: 20000,
+              photo: "",
+            },
+            {
+              name: "Bánh tráng trộn sa tế",
+              desc: "Sa tế cay nồng, đậm đà khó cưỡng.",
+              price: 22000,
+              photo: "",
+            },
+            {
+              name: "Bánh tráng trộn khô bò",
+              desc: "Nhiều khô bò, topping đầy đặn.",
+              price: 28000,
+              photo: "",
+            },
+            {
+              name: "Bánh tráng trộn trứng cút",
+              desc: "Trứng cút lòng đào, béo bùi.",
+              price: 25000,
+              photo: "",
+            },
+            {
+              name: "Bánh tráng trộn chay",
+              desc: "Topping chay, vẫn đủ vị chua cay.",
+              price: 20000,
+              photo: "",
+            },
+            {
+              name: "Bánh tráng trộn mỡ hành",
+              desc: "Mỡ hành thơm, đơn giản mà cuốn.",
+              price: 18000,
+              photo: "",
+            },
+          ],
+        },
+        {
+          cat: "Bánh tráng cuộn",
+          items: [
+            {
+              name: "Bánh tráng cuộn tôm khô",
+              desc: "Cuộn sẵn gọn tay, chấm sốt me.",
+              price: 20000,
+              photo: "",
+            },
+            {
+              name: "Bánh tráng cuộn bơ trứng",
+              desc: "Bơ, trứng cút, ruốc — béo vừa.",
+              price: 22000,
+              photo: "",
+            },
+            {
+              name: "Bánh tráng phơi sương",
+              desc: "Đặc sản Tây Ninh, dẻo mềm, cuốn rau.",
+              price: 30000,
+              photo: "",
+            },
+            {
+              name: "Bánh tráng cuộn thịt heo",
+              desc: "Thịt luộc, rau sống, chấm mắm nêm.",
+              price: 28000,
+              photo: "",
+            },
+            {
+              name: "Bánh tráng cuộn chả lụa",
+              desc: "Chả lụa, dưa leo, rau răm.",
+              price: 22000,
+              photo: "",
+            },
+            {
+              name: "Bánh tráng cuộn xúc xích",
+              desc: "Xúc xích nướng, sốt mayonnaise.",
+              price: 22000,
+              photo: "",
+            },
+            {
+              name: "Bánh tráng cuộn trứng cút",
+              desc: "Trứng cút, ruốc, hành phi.",
+              price: 20000,
+              photo: "",
+            },
+            {
+              name: "Bánh tráng cuộn ruốc khô",
+              desc: "Ruốc khô đậm vị, mỡ hành.",
+              price: 20000,
+              photo: "",
+            },
+            {
+              name: "Bánh tráng cuộn rau răm",
+              desc: "Thanh nhẹ, nhiều rau, chấm me.",
+              price: 18000,
+              photo: "",
+            },
+            {
+              name: "Bánh tráng cuộn phô mai",
+              desc: "Phô mai kéo sợi, béo ngậy.",
+              price: 25000,
+              photo: "",
+            },
+            {
+              name: "Bánh tráng cuộn cá cơm",
+              desc: "Cá cơm rim, mặn ngọt vừa miệng.",
+              price: 24000,
+              photo: "",
+            },
+            {
+              name: "Bánh tráng cuộn muối ớt",
+              desc: "Muối ớt cay, đơn giản mà gây nghiện.",
+              price: 18000,
+              photo: "",
+            },
+            {
+              name: "Bánh tráng cuộn sốt me",
+              desc: "Sốt me chua ngọt, topping đầy.",
+              price: 20000,
+              photo: "",
+            },
+            {
+              name: "Bánh tráng cuộn bò khô",
+              desc: "Bò khô xé, sa tế, rau răm.",
+              price: 28000,
+              photo: "",
+            },
+            {
+              name: "Bánh tráng cuộn thập cẩm",
+              desc: "Đủ topping trong một cuộn — no nê.",
+              price: 30000,
+              photo: "",
+            },
+          ],
+        },
+      ];
+
+      /* ĐỒ UỐNG — giống MENU; thêm "color" = màu nước hiện trong ly (để "" sẽ dùng màu mặc định) */
+      const DRINKS = [
+        {
+          cat: "Trà & nước ép",
+          items: [
+            {
+              name: "Trà tắc",
+              desc: "Tắc tươi vắt tay, chua mát, ngọt dịu.",
+              price: 20000,
+              color: "#E8B23A",
+              photo: "assets/images/tra-tac.jpg",
+            },
+            {
+              name: "Trà chanh",
+              desc: "Chanh tươi, the mát, giải nhiệt nhanh.",
+              price: 20000,
+              color: "#D8DE6A",
+              photo: "assets/images/tra-chanh.jpg",
+            },
+            {
+              name: "Nước ép cam",
+              desc: "Cam vắt nguyên chất, nhiều vitamin C.",
+              price: 35000,
+              color: "#F0922E",
+              photo: "assets/images/nuoc-ep-cam.jpg",
+            },
+            {
+              name: "Nước ép chanh leo",
+              desc: "Chanh leo chua ngọt, thơm nồng.",
+              price: 30000,
+              color: "#E0A53A",
+              photo: "assets/images/nuoc-ep-chanh-leo.jpg",
+            },
+          ],
+        },
+        {
+          cat: "Sữa & matcha",
+          items: [
+            {
+              name: "Milo dầm",
+              desc: "Milo đá bào, sữa béo, topping ngập mặt.",
+              price: 30000,
+              color: "#6B4A2E",
+              photo: "assets/images/milo-dam.jpg",
+            },
+            {
+              name: "Matcha latte",
+              desc: "Matcha Nhật đắng nhẹ, sữa béo mịn.",
+              price: 35000,
+              color: "#7FA86A",
+              photo: "assets/images/matcha-latte.jpg",
+            },
+          ],
+        },
+      ];
+
+      /* ---------- render ---------- */
+      const vnd = (n) => n.toLocaleString("vi-VN") + "đ";
+      const zaloLink = (z) =>
+        /^https?:/.test(z) ? z : "https://zalo.me/" + z.replace(/\D/g, "");
+      const discSVG =
+        '<svg viewBox="0 0 100 100" style="width:100%;height:100%"><use href="#disc"/></svg>';
+
+      function card(it) {
+        const photo = it.photo
+          ? `<img src="${it.photo}" alt="${it.name}" loading="lazy">`
+          : `<div class="ph"><div class="disc">${discSVG}</div><div class="lbl">Ảnh món</div></div>`;
+        const order = `https://zalo.me/${SHOP.zalo.replace(/\D/g, "")}`;
+        return `<article class="item-card">
+    <div class="item-photo">${photo}</div>
+    <div class="item-body">
+      <h3>${it.name}</h3>
+      <p class="desc">${it.desc}</p>
+      <div class="item-foot">
+        <span class="price">${vnd(it.price)}</span>
+        <a class="order-mini" href="${order}" target="_blank" rel="noopener">Đặt</a>
+      </div>
+    </div>
+  </article>`;
+      }
+      const glassSVG =
+        '<svg viewBox="0 0 80 104" style="width:100%;height:100%"><use href="#glass"/></svg>';
+
+      function drinkCard(it) {
+        const color = it.color || "#D9A57E";
+        const photo = it.photo
+          ? `<img src="${it.photo}" alt="${it.name}" loading="lazy">`
+          : `<div class="ph drink"><div class="glass" style="color:${color}">${glassSVG}</div><div class="lbl">Ảnh ly</div></div>`;
+        const order = `https://zalo.me/${SHOP.zalo.replace(/\D/g, "")}`;
+        return `<article class="item-card">
+    <div class="item-photo">${photo}</div>
+    <div class="item-body">
+      <h3>${it.name}</h3>
+      <p class="desc">${it.desc}</p>
+      <div class="item-foot">
+        <span class="price">${vnd(it.price)}</span>
+        <a class="order-mini" href="${order}" target="_blank" rel="noopener">Đặt</a>
+      </div>
+    </div>
+  </article>`;
+      }
+
+      function setupMenuFilter() {
+        const root = document.getElementById("menu-root");
+        const bar = document.getElementById("menu-filter");
+
+        root.innerHTML = MENU.map(
+          (g, i) =>
+            `<div class="cat-block" data-cat="${i}">
+       <div class="cat"><span>${g.cat}</span></div>
+       <div class="menu-grid">${g.items.map(card).join("")}</div>
+     </div>`,
+        ).join("");
+
+        const total = MENU.reduce((s, g) => s + g.items.length, 0);
+        const chip = (val, label, count, on) =>
+          `<button class="chip" role="tab" data-cat="${val}" aria-selected="${on}">${label}<span class="n">${count}</span></button>`;
+        bar.innerHTML = [chip("all", "Tất cả", total, true)]
+          .concat(MENU.map((g, i) => chip(i, g.cat, g.items.length, false)))
+          .join("");
+
+        bar.addEventListener("click", (e) => {
+          const btn = e.target.closest(".chip");
+          if (!btn) return;
+          const sel = btn.dataset.cat;
+          bar
+            .querySelectorAll(".chip")
+            .forEach((c) =>
+              c.setAttribute("aria-selected", c === btn ? "true" : "false"),
+            );
+          root.querySelectorAll(".cat-block").forEach((b) => {
+            b.hidden = !(sel === "all" || b.dataset.cat === sel);
+          });
+          // đưa kết quả lên ngay dưới thanh lọc nếu đang xem ở dưới
+          const y = bar.getBoundingClientRect().top + window.scrollY - 72;
+          if (window.scrollY > y) window.scrollTo({ top: y, behavior: "smooth" });
+        });
+      }
+
+      function render() {
+        setupMenuFilter();
+
+        document.getElementById("drinks-root").innerHTML = DRINKS.map(
+          (g) =>
+            `<div class="cat"><span>${g.cat}</span></div>
+     <div class="menu-grid">${g.items.map(drinkCard).join("")}</div>`,
+        ).join("");
+
+        // contact wiring
+        const tel = "tel:" + SHOP.phone.replace(/\s/g, "");
+        document.getElementById("c-phone").href = tel;
+        document.getElementById("v-phone").textContent = SHOP.phone.replace(
+          /(\d{4})(\d{3})(\d{3})/,
+          "$1 $2 $3",
+        );
+        const z = zaloLink(SHOP.zalo);
+        document.getElementById("c-zalo").href = z;
+        document.getElementById("nav-order").href = z;
+        document.getElementById("c-fb").href = SHOP.facebook;
+        document.getElementById("v-addr").textContent = SHOP.address;
+        document.getElementById("v-hours").textContent = SHOP.hours;
+      }
+      render();
+    </script>
+  </body>
+</html>
