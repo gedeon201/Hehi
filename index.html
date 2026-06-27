@@ -120,12 +120,15 @@
         color: var(--terra-deep);
       }
       .pill {
+        font-family: var(--sans);
         font-size: 13.5px;
         font-weight: 600;
         color: #fff;
         background: var(--terra);
         padding: 9px 18px;
+        border: none;
         border-radius: 999px;
+        cursor: pointer;
         transition: background 0.2s;
       }
       .pill:hover {
@@ -452,20 +455,16 @@
         box-shadow: 0 16px 36px -18px rgba(46, 32, 24, 0.4);
       }
       .item-photo {
-        aspect-ratio: 4/5;
+        aspect-ratio: 4/3;
         position: relative;
         overflow: hidden;
-        padding: 10px;
-        background: radial-gradient(
-          120% 120% at 50% 30%,
-          var(--cream-hi),
-          var(--cream)
-        );
+        background: var(--cream-hi);
       }
       .item-photo img {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
+        object-position: center;
       }
       /* placeholder disc when no photo */
       .ph {
@@ -556,12 +555,15 @@
         color: var(--ink-3);
       }
       .order-mini {
+        font-family: var(--sans);
         font-size: 13px;
         font-weight: 600;
         color: var(--terra);
+        background: transparent;
         border: 1.5px solid var(--card-edge);
         padding: 7px 15px;
         border-radius: 999px;
+        cursor: pointer;
         transition: all 0.2s;
       }
       .order-mini:hover {
@@ -665,6 +667,162 @@
       .info b {
         color: var(--ink);
         font-weight: 600;
+      }
+
+      /* ===== NÚT LÊN ĐẦU ===== */
+      .to-top {
+        position: fixed;
+        right: 22px;
+        bottom: 22px;
+        z-index: 60;
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        background: var(--terra);
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 8px 22px -6px rgba(46, 32, 24, 0.5);
+        opacity: 0;
+        transform: translateY(14px) scale(0.9);
+        pointer-events: none;
+        transition:
+          opacity 0.25s,
+          transform 0.25s,
+          background 0.2s;
+      }
+      .to-top.show {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+      }
+      .to-top:hover {
+        background: var(--terra-deep);
+      }
+      .to-top svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      /* ===== POPUP ĐẶT HÀNG ===== */
+      .modal[hidden] {
+        display: none;
+      }
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: grid;
+        place-items: center;
+        padding: 20px;
+      }
+      .modal-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(46, 32, 24, 0.5);
+        backdrop-filter: blur(3px);
+        animation: fade 0.2s ease;
+      }
+      .modal-box {
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+        background: var(--paper);
+        border: 1px solid var(--card-edge);
+        border-radius: 22px;
+        padding: 30px 28px 28px;
+        text-align: center;
+        box-shadow: 0 28px 64px -22px rgba(46, 32, 24, 0.6);
+        animation: pop 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+      }
+      @keyframes fade {
+        from {
+          opacity: 0;
+        }
+      }
+      @keyframes pop {
+        from {
+          opacity: 0;
+          transform: translateY(12px) scale(0.96);
+        }
+      }
+      .modal-x {
+        position: absolute;
+        top: 12px;
+        right: 14px;
+        width: 34px;
+        height: 34px;
+        font-size: 24px;
+        line-height: 1;
+        color: var(--ink-3);
+        background: transparent;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .modal-x:hover {
+        background: var(--cream);
+        color: var(--ink);
+      }
+      .modal-title {
+        font-family: var(--serif);
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 1.1;
+      }
+      .modal-sub {
+        color: var(--ink-2);
+        font-size: 14.5px;
+        margin-top: 6px;
+      }
+      .modal-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 22px;
+      }
+      .order-opt {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        text-align: left;
+        padding: 15px 18px;
+        border-radius: 15px;
+        border: 1.5px solid var(--card-edge);
+        background: var(--card);
+        transition: all 0.2s;
+      }
+      .order-opt:hover {
+        transform: translateY(-2px);
+        border-color: var(--terra);
+        box-shadow: 0 12px 26px -16px rgba(46, 32, 24, 0.5);
+      }
+      .order-opt svg {
+        width: 32px;
+        height: 32px;
+        flex: none;
+      }
+      .order-opt.fb svg {
+        color: #0866ff;
+      }
+      .order-opt.phone svg {
+        color: var(--terra);
+      }
+      .order-opt .k {
+        font-size: 12.5px;
+        color: var(--ink-3);
+        letter-spacing: 0.02em;
+      }
+      .order-opt b {
+        font-size: 16.5px;
+        color: var(--ink);
+        font-weight: 600;
+      }
+      body.modal-open {
+        overflow: hidden;
       }
 
       /* ===== FOOTER ===== */
@@ -831,7 +989,7 @@
           <a href="#drinks">Đồ uống</a>
           <a href="#story">Về Hehi</a>
           <a href="#contact">Liên hệ</a>
-          <a class="pill" id="nav-order" href="#contact">Đặt qua Zalo</a>
+          <button class="pill" type="button" data-order>Đặt hàng</button>
         </nav>
       </div>
     </header>
@@ -924,7 +1082,7 @@
         <div class="sec-head">
           <div class="eyebrow">Thực đơn</div>
           <h2>Các món của Hehi</h2>
-          <p>Giá đã bao gồm topping. Chạm “Đặt” để nhắn nhanh qua Zalo.</p>
+          <p>Giá đã bao gồm topping. Chạm “Đặt” để chọn cách đặt hàng.</p>
         </div>
         <div id="menu-filter" class="menu-filter" role="tablist" aria-label="Lọc theo danh mục"></div>
         <div id="menu-root"></div>
@@ -978,7 +1136,7 @@
         <div class="sec-head">
           <div class="eyebrow">Liên hệ &amp; đặt món</div>
           <h2>Nhắn Hehi một tiếng nhé</h2>
-          <p>Đặt nhanh qua Zalo hoặc gọi trực tiếp — Hehi gói và giao ngay.</p>
+          <p>Gọi trực tiếp hoặc nhắn Facebook — Hehi gói và giao ngay.</p>
         </div>
         <div class="channels">
           <a class="chan" id="c-phone" href="#">
@@ -999,23 +1157,6 @@
               ></span
             >
           </a>
-          <a class="chan" id="c-zalo" href="#" target="_blank" rel="noopener">
-            <svg
-              class="ci"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-            >
-              <rect x="3" y="3" width="18" height="18" rx="6" />
-              <path d="M8 9h5M8 9l4 6h-4M16 9v6" />
-            </svg>
-            <span
-              ><span class="k">Nhắn Zalo</span><br /><span class="v"
-                >Đặt nhanh</span
-              ></span
-            >
-          </a>
           <a class="chan" id="c-fb" href="#" target="_blank" rel="noopener">
             <svg
               class="ci"
@@ -1027,8 +1168,8 @@
               <path d="M14 8h2V5h-2c-2 0-3 1-3 3v2H9v3h2v6h3v-6h2l1-3h-3V8z" />
             </svg>
             <span
-              ><span class="k">Facebook</span><br /><span class="v"
-                >Hehi</span
+              ><span class="k">Nhắn Facebook</span><br /><span class="v"
+                >Messenger</span
               ></span
             >
           </a>
@@ -1039,6 +1180,38 @@
         </div>
       </div>
     </section>
+
+    <!-- NÚT LÊN ĐẦU DANH SÁCH -->
+    <button id="to-top" class="to-top" type="button" aria-label="Lên đầu danh sách món">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 19V5M5 12l7-7 7 7" />
+      </svg>
+    </button>
+
+    <!-- POPUP ĐẶT HÀNG -->
+    <div id="order-modal" class="modal" hidden>
+      <div class="modal-overlay" data-close></div>
+      <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="order-title">
+        <button class="modal-x" type="button" data-close aria-label="Đóng">&times;</button>
+        <div class="eyebrow" style="margin-bottom: 8px">Đặt hàng</div>
+        <h3 id="order-title" class="modal-title">Đặt món Hehi</h3>
+        <p class="modal-sub" id="order-sub">Chọn cách đặt nhanh nhất với bạn.</p>
+        <div class="modal-actions">
+          <a id="m-fb" class="order-opt fb" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.5 2 2 6.1 2 11.2c0 2.9 1.4 5.5 3.7 7.2V22l3.4-1.9c.9.3 1.9.4 2.9.4 5.5 0 10-4.1 10-9.3S17.5 2 12 2zm1 12.5l-2.6-2.7-5 2.7 5.4-5.7 2.6 2.7 4.9-2.7-5.3 5.7z" />
+            </svg>
+            <span><span class="k">Nhắn đặt qua</span><br /><b>Facebook Messenger</b></span>
+          </a>
+          <a id="m-phone" class="order-opt phone" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+              <path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" />
+            </svg>
+            <span><span class="k">Gọi điện đặt</span><br /><b id="m-phone-num">0964 748 460</b></span>
+          </a>
+        </div>
+      </div>
+    </div>
 
     <!-- FOOTER -->
     <footer class="foot">
@@ -1065,9 +1238,8 @@
    - price: số tiền (đồng)
    ============================================================ */
       const SHOP = {
-        phone: "0900000000", // số gọi & Zalo
-        zalo: "0900000000", // số/đường dẫn Zalo (vd "0900000000" hoặc "zalo-username")
-        facebook: "https://facebook.com/", // link trang Facebook
+        phone: "0964748460", // số gọi & hiển thị
+        messenger: "https://www.facebook.com/messages/e2ee/t/8696770667020765/", // link chat Facebook Messenger
         address: "Quận 1, TP. Hồ Chí Minh",
         hours: "9:00 – 21:00 mỗi ngày",
       };
@@ -1361,8 +1533,6 @@
 
       /* ---------- render ---------- */
       const vnd = (n) => n.toLocaleString("vi-VN") + "đ";
-      const zaloLink = (z) =>
-        /^https?:/.test(z) ? z : "https://zalo.me/" + z.replace(/\D/g, "");
       const discSVG =
         '<svg viewBox="0 0 100 100" style="width:100%;height:100%"><use href="#disc"/></svg>';
 
@@ -1370,7 +1540,6 @@
         const photo = it.photo
           ? `<img src="${it.photo}" alt="${it.name}" loading="lazy" decoding="async">`
           : `<div class="ph"><div class="disc">${discSVG}</div><div class="lbl">Ảnh món</div></div>`;
-        const order = `https://zalo.me/${SHOP.zalo.replace(/\D/g, "")}`;
         return `<article class="item-card">
     <div class="item-photo">${photo}</div>
     <div class="item-body">
@@ -1378,7 +1547,7 @@
       <p class="desc">${it.desc}</p>
       <div class="item-foot">
         <span class="price">${vnd(it.price)}</span>
-        <a class="order-mini" href="${order}" target="_blank" rel="noopener">Đặt</a>
+        <button class="order-mini" type="button" data-order data-item="${it.name}">Đặt</button>
       </div>
     </div>
   </article>`;
@@ -1391,7 +1560,6 @@
         const photo = it.photo
           ? `<img src="${it.photo}" alt="${it.name}" loading="lazy" decoding="async">`
           : `<div class="ph drink"><div class="glass" style="color:${color}">${glassSVG}</div><div class="lbl">Ảnh ly</div></div>`;
-        const order = `https://zalo.me/${SHOP.zalo.replace(/\D/g, "")}`;
         return `<article class="item-card">
     <div class="item-photo">${photo}</div>
     <div class="item-body">
@@ -1399,7 +1567,7 @@
       <p class="desc">${it.desc}</p>
       <div class="item-foot">
         <span class="price">${vnd(it.price)}</span>
-        <a class="order-mini" href="${order}" target="_blank" rel="noopener">Đặt</a>
+        <button class="order-mini" type="button" data-order data-item="${it.name}">Đặt</button>
       </div>
     </div>
   </article>`;
@@ -1452,20 +1620,70 @@
         ).join("");
 
         // contact wiring
-        const tel = "tel:" + SHOP.phone.replace(/\s/g, "");
+        const fmtPhone = SHOP.phone.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
+        const tel = "tel:" + SHOP.phone.replace(/\D/g, "");
         document.getElementById("c-phone").href = tel;
-        document.getElementById("v-phone").textContent = SHOP.phone.replace(
-          /(\d{4})(\d{3})(\d{3})/,
-          "$1 $2 $3",
-        );
-        const z = zaloLink(SHOP.zalo);
-        document.getElementById("c-zalo").href = z;
-        document.getElementById("nav-order").href = z;
-        document.getElementById("c-fb").href = SHOP.facebook;
+        document.getElementById("v-phone").textContent = fmtPhone;
+        document.getElementById("c-fb").href = SHOP.messenger;
         document.getElementById("v-addr").textContent = SHOP.address;
         document.getElementById("v-hours").textContent = SHOP.hours;
+
+        // popup đặt hàng
+        document.getElementById("m-fb").href = SHOP.messenger;
+        document.getElementById("m-phone").href = tel;
+        document.getElementById("m-phone-num").textContent = fmtPhone;
       }
       render();
+
+      /* ---------- popup đặt hàng ---------- */
+      const modal = document.getElementById("order-modal");
+      const orderSub = document.getElementById("order-sub");
+      let lastFocus = null;
+      function openOrder(itemName) {
+        orderSub.textContent = itemName
+          ? `Món: ${itemName} — chọn cách đặt bên dưới.`
+          : "Chọn cách đặt nhanh nhất với bạn.";
+        lastFocus = document.activeElement;
+        modal.hidden = false;
+        document.body.classList.add("modal-open");
+        modal.querySelector(".order-opt").focus();
+      }
+      function closeOrder() {
+        modal.hidden = true;
+        document.body.classList.remove("modal-open");
+        if (lastFocus) lastFocus.focus();
+      }
+      document.addEventListener("click", (e) => {
+        const trigger = e.target.closest("[data-order]");
+        if (trigger) {
+          e.preventDefault();
+          openOrder(trigger.dataset.item || "");
+          return;
+        }
+        if (e.target.closest(".order-opt")) {
+          closeOrder();
+          return;
+        }
+        if (e.target.closest("[data-close]")) closeOrder();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !modal.hidden) closeOrder();
+      });
+
+      /* ---------- nút lên đầu danh sách ---------- */
+      const toTop = document.getElementById("to-top");
+      const menuSec = document.getElementById("menu");
+      window.addEventListener(
+        "scroll",
+        () => {
+          toTop.classList.toggle("show", window.scrollY > 600);
+        },
+        { passive: true },
+      );
+      toTop.addEventListener("click", () => {
+        const y = menuSec.getBoundingClientRect().top + window.scrollY - 64;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      });
     </script>
   </body>
 </html>
