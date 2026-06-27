@@ -1,0 +1,32 @@
+<svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" font-family="'Cormorant Garamond', serif">
+  <defs>
+    <pattern id="weave_refined" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M0,8 L8,0" stroke="#7a4a2b" stroke-width="0.8" opacity="0.3"/>
+      <path d="M0,0 L8,8" stroke="#7a4a2b" stroke-width="0.8" opacity="0.3"/>
+    </pattern>
+    <clipPath id="clip_banhtrang"><circle cx="288" cy="88" r="16"/></clipPath>
+  </defs>
+  <rect width="400" height="240" fill="#f6ecd9" rx="12"/>
+  
+  <!-- Wordmark Hehi -->
+  <text x="200" y="115" font-size="88" font-weight="500" fill="#4a2f1b" text-anchor="middle" letter-spacing="-1">Hehi</text>
+  
+  <!-- Biểu tượng bánh tráng với icon hạt mè bên trong -->
+  <circle cx="288" cy="88" r="16" fill="#e8b9a0"/>
+  <g clip-path="url(#clip_banhtrang)">
+    <rect x="270" y="70" width="40" height="40" fill="url(#weave_refined)"/>
+    <!-- Icon hạt mè trang trí -->
+    <g fill="#5c3a21">
+      <ellipse cx="284" cy="84" rx="1.5" ry="0.8" transform="rotate(-20 284 84)"/>
+      <ellipse cx="294" cy="86" rx="1.5" ry="0.8" transform="rotate(30 294 86)"/>
+      <ellipse cx="288" cy="94" rx="1.5" ry="0.8" transform="rotate(-10 288 94)"/>
+    </g>
+  </g>
+  <circle cx="288" cy="88" r="16" fill="none" stroke="#c75b39" stroke-width="2"/>
+  
+  <!-- Dòng chữ phụ 1 -->
+  <text x="200" y="165" font-size="14" letter-spacing="8" fill="#7a4a2b" text-anchor="middle">BÁNH TRÁNG SÀI GÒN</text>
+  
+  <!-- Dòng chữ phụ 2: Hương vị độc quyền -->
+  <text x="200" y="195" font-size="12" font-style="italic" letter-spacing="2" fill="#c75b39" text-anchor="middle">Hương vị độc quyền</text>
+</svg>

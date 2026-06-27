@@ -903,33 +903,37 @@
     <!-- woven bánh-tráng disc, reusable -->
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
       <defs>
+        <!-- dệt chéo tinh chỉnh theo code.html -->
+        <pattern
+          id="weave"
+          width="10"
+          height="10"
+          patternUnits="userSpaceOnUse"
+        >
+          <path d="M0,10 L10,0" stroke="#7A4A2B" stroke-width="1" opacity="0.3" />
+          <path d="M0,0 L10,10" stroke="#7A4A2B" stroke-width="1" opacity="0.3" />
+        </pattern>
+        <!-- biểu tượng bánh tráng (logo) -->
         <g id="disc">
-          <circle
-            cx="50"
-            cy="50"
-            r="46"
-            fill="#E8C49C"
-            stroke="#C98B5E"
-            stroke-width="2"
-          />
+          <circle cx="50" cy="50" r="46" fill="#E8B9A0" />
           <clipPath id="cc"><circle cx="50" cy="50" r="45" /></clipPath>
-          <g
+          <rect
+            x="4"
+            y="4"
+            width="92"
+            height="92"
+            fill="url(#weave)"
             clip-path="url(#cc)"
-            stroke="#C98B5E"
-            stroke-width="1"
-            opacity=".55"
-          >
-            <path d="M10 30H90M10 42H90M10 54H90M10 66H90M10 78H90M10 18H90" />
-            <path d="M30 10V90M42 10V90M54 10V90M66 10V90M78 10V90M18 10V90" />
+          />
+          <!-- hạt mè -->
+          <g clip-path="url(#cc)" fill="#5C3A21">
+            <ellipse cx="38" cy="40" rx="2.6" ry="1.4" transform="rotate(-20 38 40)" />
+            <ellipse cx="64" cy="44" rx="2.6" ry="1.4" transform="rotate(30 64 44)" />
+            <ellipse cx="50" cy="64" rx="2.6" ry="1.4" transform="rotate(-10 50 64)" />
+            <ellipse cx="66" cy="66" rx="2.4" ry="1.3" transform="rotate(15 66 66)" />
+            <ellipse cx="34" cy="62" rx="2.4" ry="1.3" transform="rotate(40 34 62)" />
           </g>
-          <g clip-path="url(#cc)" fill="#B97A4E" opacity=".7">
-            <circle cx="30" cy="36" r="1.6" />
-            <circle cx="64" cy="28" r="1.4" />
-            <circle cx="44" cy="60" r="1.6" />
-            <circle cx="70" cy="64" r="1.4" />
-            <circle cx="56" cy="46" r="1.3" />
-            <circle cx="34" cy="70" r="1.4" />
-          </g>
+          <circle cx="50" cy="50" r="46" fill="none" stroke="#C75B39" stroke-width="2" />
         </g>
         <!-- ly đồ uống: màu nước = currentColor (đặt qua style color của card) -->
         <symbol id="glass" viewBox="0 0 80 104">
@@ -1175,8 +1179,8 @@
           </a>
         </div>
         <div class="info">
-          <div>📍 <b id="v-addr">Quận 1, TP. Hồ Chí Minh</b></div>
-          <div>🕙 <b id="v-hours">9:00 – 21:00 mỗi ngày</b></div>
+          <div>📍 <b id="v-addr">Ngọc Bộ - Nghĩa Trụ - Hưng Yên</b></div>
+          <div>🕙 <b id="v-hours">8:00 – 22:00 mỗi ngày</b></div>
         </div>
       </div>
     </section>
@@ -1240,8 +1244,8 @@
       const SHOP = {
         phone: "0964748460", // số gọi & hiển thị
         messenger: "https://www.facebook.com/messages/e2ee/t/8696770667020765/", // link chat Facebook Messenger
-        address: "Quận 1, TP. Hồ Chí Minh",
-        hours: "9:00 – 21:00 mỗi ngày",
+        address: "Ngọc Bộ - Nghĩa Trụ - Hưng Yên",
+        hours: "8:00 – 22:00 mỗi ngày",
       };
 
       const MENU = [
@@ -1604,9 +1608,13 @@
           root.querySelectorAll(".cat-block").forEach((b) => {
             b.hidden = !(sel === "all" || b.dataset.cat === sel);
           });
-          // đưa kết quả lên ngay dưới thanh lọc nếu đang xem ở dưới
-          const y = bar.getBoundingClientRect().top + window.scrollY - 72;
-          if (window.scrollY > y) window.scrollTo({ top: y, behavior: "smooth" });
+          // canh chip đang chọn vào giữa thanh lọc (mobile/tablet)
+          const cx = btn.offsetLeft - (bar.clientWidth - btn.offsetWidth) / 2;
+          bar.scrollTo({ left: cx, behavior: "smooth" });
+          // luôn đưa về đầu danh sách item khi đổi tab
+          let y = 0;
+          for (let el = bar; el; el = el.offsetParent) y += el.offsetTop;
+          window.scrollTo({ top: y - 64, behavior: "smooth" });
         });
       }
 
