@@ -563,24 +563,6 @@
         font-size: 13px;
         color: var(--ink-3);
       }
-      .order-mini {
-        font-family: var(--sans);
-        font-size: 13px;
-        font-weight: 600;
-        color: var(--terra);
-        background: transparent;
-        border: 1.5px solid var(--card-edge);
-        padding: 7px 15px;
-        border-radius: 999px;
-        cursor: pointer;
-        transition: all 0.2s;
-      }
-      .order-mini:hover {
-        background: var(--terra);
-        color: #fff;
-        border-color: var(--terra);
-      }
-
       /* ===== STORY ===== */
       .story {
         background: var(--paper);
@@ -837,6 +819,227 @@
       }
       body.modal-open {
         overflow: hidden;
+      }
+
+      /* ===== STEPPER CHỌN MÓN ===== */
+      .stepper {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .step-add {
+        font-family: var(--sans);
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--terra);
+        background: transparent;
+        border: 1.5px solid var(--card-edge);
+        padding: 7px 14px;
+        border-radius: 999px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.2s;
+      }
+      .step-add:hover {
+        background: var(--terra);
+        color: #fff;
+        border-color: var(--terra);
+      }
+      .step {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 1.5px solid var(--card-edge);
+        background: var(--card);
+        color: var(--terra-deep);
+        font-size: 18px;
+        line-height: 1;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        font-family: var(--sans);
+        transition: all 0.15s;
+      }
+      .step:hover {
+        border-color: var(--terra);
+        background: var(--terra);
+        color: #fff;
+      }
+      .qty {
+        min-width: 22px;
+        text-align: center;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* ===== THANH GIỎ ĐÁY ===== */
+      .cart-bar {
+        position: fixed;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        max-width: 460px;
+        margin: 0 auto;
+        z-index: 70;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        background: var(--ink);
+        color: var(--cream);
+        padding: 11px 11px 11px 20px;
+        border-radius: 16px;
+        box-shadow: 0 14px 34px -10px rgba(46, 32, 24, 0.55);
+        animation: pop 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+      }
+      .cart-bar[hidden] {
+        display: none;
+      }
+      .cart-meta {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.25;
+      }
+      .cart-meta b {
+        font-size: 15px;
+      }
+      .cart-meta span {
+        font-size: 13px;
+        color: var(--tan);
+        font-variant-numeric: tabular-nums;
+      }
+      .cart-go {
+        background: var(--terra);
+        color: #fff;
+        border: none;
+        border-radius: 999px;
+        padding: 11px 20px;
+        font-weight: 600;
+        font-family: var(--sans);
+        font-size: 14.5px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: background 0.2s;
+      }
+      .cart-go:hover {
+        background: var(--terra-deep);
+      }
+      body.has-cart {
+        padding-bottom: 76px;
+      }
+      body.has-cart .to-top {
+        bottom: 86px;
+      }
+
+      /* ===== TỔNG HỢP ĐƠN TRONG POPUP ===== */
+      .order-summary {
+        text-align: left;
+        margin: 6px 0 14px;
+      }
+      .sum-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        margin-bottom: 8px;
+      }
+      .sum-clear {
+        background: none;
+        border: none;
+        color: var(--terra);
+        font-size: 12.5px;
+        cursor: pointer;
+        font-family: var(--sans);
+        text-transform: none;
+        letter-spacing: 0;
+      }
+      .sum-clear:hover {
+        text-decoration: underline;
+      }
+      .sum-row {
+        display: flex;
+        gap: 8px;
+        padding: 7px 0;
+        border-bottom: 1px dashed var(--line);
+        font-size: 14.5px;
+      }
+      .sum-q {
+        color: var(--terra-deep);
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+      }
+      .sum-n {
+        flex: 1;
+      }
+      .sum-p {
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+      .sum-total {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-top: 12px;
+        font-size: 16px;
+      }
+      .sum-total b {
+        color: var(--terra-deep);
+        font-size: 19px;
+      }
+      .sum-empty {
+        color: var(--ink-2);
+        font-size: 14.5px;
+        text-align: center;
+        padding: 6px 0 4px;
+      }
+      .copy-btn {
+        width: 100%;
+        font-family: var(--sans);
+        font-size: 14.5px;
+        font-weight: 600;
+        color: #fff;
+        background: var(--ink);
+        border: none;
+        border-radius: 14px;
+        padding: 13px;
+        cursor: pointer;
+        margin-bottom: 12px;
+        transition: background 0.2s;
+      }
+      .copy-btn:hover {
+        background: #3d2a1d;
+      }
+      .copy-btn[hidden] {
+        display: none;
+      }
+
+      /* ===== TOAST ===== */
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 92px;
+        transform: translateX(-50%) translateY(10px);
+        background: var(--ink);
+        color: var(--cream);
+        padding: 11px 20px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 500;
+        z-index: 120;
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.25s,
+          transform 0.25s;
+        box-shadow: 0 10px 26px -8px rgba(0, 0, 0, 0.5);
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
       }
 
       /* ===== FOOTER ===== */
@@ -1240,14 +1443,27 @@
       </svg>
     </button>
 
+    <!-- THANH GIỎ CHỌN MÓN -->
+    <div id="cart-bar" class="cart-bar" hidden>
+      <div class="cart-meta">
+        <b id="cart-count">0 món</b>
+        <span id="cart-total">0đ</span>
+      </div>
+      <button class="cart-go" type="button" data-order>Đặt hàng →</button>
+    </div>
+
     <!-- POPUP ĐẶT HÀNG -->
     <div id="order-modal" class="modal" hidden>
       <div class="modal-overlay" data-close></div>
       <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="order-title">
         <button class="modal-x" type="button" data-close aria-label="Đóng">&times;</button>
         <div class="eyebrow" style="margin-bottom: 8px">Đặt hàng</div>
-        <h3 id="order-title" class="modal-title">Đặt món Hehi</h3>
-        <p class="modal-sub" id="order-sub">Chọn cách đặt nhanh nhất với bạn.</p>
+        <h3 id="order-title" class="modal-title">Đơn hàng của bạn</h3>
+        <p class="modal-sub" id="order-sub">Copy danh sách rồi gửi cho cửa hàng nhé.</p>
+        <div id="order-summary" class="order-summary"></div>
+        <button id="copy-order" class="copy-btn" type="button">
+          📋 Copy danh sách món
+        </button>
         <div class="modal-actions">
           <a id="m-fb" class="order-opt fb" href="#" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -1592,6 +1808,39 @@
 
       /* ---------- render ---------- */
       const vnd = (n) => n.toLocaleString("vi-VN") + "đ";
+
+      /* ---------- giỏ chọn món (lưu localStorage) ---------- */
+      const CART_KEY = "hehi_cart_v1";
+      let cart = {};
+      try {
+        cart = JSON.parse(localStorage.getItem(CART_KEY)) || {};
+      } catch (e) {
+        cart = {};
+      }
+      const qtyOf = (name) => (cart[name] ? cart[name].qty : 0);
+      function saveCart() {
+        try {
+          localStorage.setItem(CART_KEY, JSON.stringify(cart));
+        } catch (e) {}
+      }
+      function setQty(name, price, qty) {
+        if (qty <= 0) delete cart[name];
+        else cart[name] = { name, price, qty };
+        saveCart();
+        updateCartBar();
+      }
+      function stepperHTML(q) {
+        return q > 0
+          ? `<button class="step" data-act="dec" type="button" aria-label="Bớt">−</button><span class="qty">${q}</span><button class="step" data-act="inc" type="button" aria-label="Thêm">+</button>`
+          : `<button class="step-add" data-act="inc" type="button">＋ Thêm</button>`;
+      }
+      function footHTML(it) {
+        return `<div class="item-foot">
+        <span class="price">${vnd(it.price)}</span>
+        <div class="stepper" data-name="${it.name}" data-price="${it.price}">${stepperHTML(qtyOf(it.name))}</div>
+      </div>`;
+      }
+
       const discSVG =
         '<svg viewBox="0 0 100 100" style="width:100%;height:100%"><use href="#disc"/></svg>';
 
@@ -1607,10 +1856,7 @@
     <div class="item-body">
       <h3>${it.name}${star}</h3>
       <p class="desc">${it.desc}</p>
-      <div class="item-foot">
-        <span class="price">${vnd(it.price)}</span>
-        <button class="order-mini" type="button" data-order data-item="${it.name}">Đặt</button>
-      </div>
+      ${footHTML(it)}
     </div>
   </article>`;
       }
@@ -1627,10 +1873,7 @@
     <div class="item-body">
       <h3>${it.name}</h3>
       <p class="desc">${it.desc}</p>
-      <div class="item-foot">
-        <span class="price">${vnd(it.price)}</span>
-        <button class="order-mini" type="button" data-order data-item="${it.name}">Đặt</button>
-      </div>
+      ${footHTML(it)}
     </div>
   </article>`;
       }
@@ -1701,29 +1944,124 @@
       }
       render();
 
+      /* ---------- giỏ: thanh đáy + text đơn + toast ---------- */
+      function updateCartBar() {
+        const bar = document.getElementById("cart-bar");
+        if (!bar) return;
+        const items = Object.values(cart);
+        const count = items.reduce((s, i) => s + i.qty, 0);
+        const total = items.reduce((s, i) => s + i.qty * i.price, 0);
+        document.getElementById("cart-count").textContent = count + " món";
+        document.getElementById("cart-total").textContent = vnd(total);
+        bar.hidden = count === 0;
+        document.body.classList.toggle("has-cart", count > 0);
+      }
+      function orderText() {
+        const items = Object.values(cart);
+        if (!items.length) return "";
+        const lines = items.map(
+          (i) => `• ${i.name} x${i.qty} = ${vnd(i.qty * i.price)}`,
+        );
+        const total = items.reduce((s, i) => s + i.qty * i.price, 0);
+        return `ĐƠN HÀNG HEHI\n${lines.join("\n")}\n———\nTổng: ${vnd(total)}`;
+      }
+      function toast(msg) {
+        let t = document.getElementById("toast");
+        if (!t) {
+          t = document.createElement("div");
+          t.id = "toast";
+          t.className = "toast";
+          document.body.appendChild(t);
+        }
+        t.textContent = msg;
+        t.classList.add("show");
+        clearTimeout(t._t);
+        t._t = setTimeout(() => t.classList.remove("show"), 1800);
+      }
+
       /* ---------- popup đặt hàng ---------- */
       const modal = document.getElementById("order-modal");
       const orderSub = document.getElementById("order-sub");
       let lastFocus = null;
-      function openOrder(itemName) {
-        orderSub.textContent = itemName
-          ? `Món: ${itemName} — chọn cách đặt bên dưới.`
-          : "Chọn cách đặt nhanh nhất với bạn.";
+      function openOrder() {
+        const items = Object.values(cart);
+        const summary = document.getElementById("order-summary");
+        const copyBtn = document.getElementById("copy-order");
+        if (items.length) {
+          const total = items.reduce((s, i) => s + i.qty * i.price, 0);
+          summary.innerHTML =
+            `<div class="sum-head"><span>Món đã chọn</span><button class="sum-clear" type="button" id="clear-cart">Xoá hết</button></div>` +
+            items
+              .map(
+                (i) =>
+                  `<div class="sum-row"><span class="sum-q">${i.qty}×</span><span class="sum-n">${i.name}</span><span class="sum-p">${vnd(i.qty * i.price)}</span></div>`,
+              )
+              .join("") +
+            `<div class="sum-total"><span>Tổng cộng</span><b>${vnd(total)}</b></div>`;
+          copyBtn.hidden = false;
+          orderSub.textContent = "Copy danh sách rồi gửi qua Facebook nhé.";
+        } else {
+          summary.innerHTML = `<p class="sum-empty">Bạn chưa chọn món nào — bấm ＋ Thêm ở mỗi món, hoặc nhắn trực tiếp để đặt.</p>`;
+          copyBtn.hidden = true;
+          orderSub.textContent = "Chọn món rồi quay lại, hoặc nhắn trực tiếp.";
+        }
         lastFocus = document.activeElement;
         modal.hidden = false;
         document.body.classList.add("modal-open");
-        modal.querySelector(".order-opt").focus();
+        (copyBtn.hidden ? modal.querySelector(".order-opt") : copyBtn).focus();
       }
       function closeOrder() {
         modal.hidden = true;
         document.body.classList.remove("modal-open");
         if (lastFocus) lastFocus.focus();
       }
+      document
+        .getElementById("copy-order")
+        .addEventListener("click", async () => {
+          const text = orderText();
+          if (!text) return;
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch (e) {
+            const ta = document.createElement("textarea");
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+              document.execCommand("copy");
+            } catch (e2) {}
+            ta.remove();
+          }
+          toast("Đã copy danh sách món ✓");
+        });
       document.addEventListener("click", (e) => {
+        // tăng/giảm số lượng ngay trên card
+        const stepBtn = e.target.closest(".stepper button");
+        if (stepBtn) {
+          const box = stepBtn.closest(".stepper");
+          const name = box.dataset.name;
+          const price = Number(box.dataset.price);
+          const next = qtyOf(name) + (stepBtn.dataset.act === "inc" ? 1 : -1);
+          setQty(name, price, next);
+          box.innerHTML = stepperHTML(qtyOf(name));
+          return;
+        }
+        // xoá hết giỏ (nút trong popup)
+        if (e.target.id === "clear-cart") {
+          cart = {};
+          saveCart();
+          updateCartBar();
+          document
+            .querySelectorAll(".stepper")
+            .forEach((s) => (s.innerHTML = stepperHTML(0)));
+          closeOrder();
+          return;
+        }
+        // mở popup đặt hàng
         const trigger = e.target.closest("[data-order]");
         if (trigger) {
           e.preventDefault();
-          openOrder(trigger.dataset.item || "");
+          openOrder();
           return;
         }
         if (e.target.closest(".order-opt")) {
@@ -1732,6 +2070,7 @@
         }
         if (e.target.closest("[data-close]")) closeOrder();
       });
+      updateCartBar();
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && !modal.hidden) closeOrder();
       });
