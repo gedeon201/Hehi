@@ -935,8 +935,7 @@
       }
       .step,
       .step-add,
-      .sum-del,
-      .cart-go {
+      .sum-del {
         user-select: none;
         -webkit-user-select: none;
       }
@@ -960,63 +959,60 @@
         color: var(--terra-deep);
       }
 
-      /* ===== THANH GIỎ ĐÁY ===== */
-      .cart-bar {
+      /* ===== NÚT GIỎ HÀNG (nổi, góc dưới-phải) ===== */
+      .cart-fab {
         position: fixed;
-        left: 16px;
-        right: 16px;
-        bottom: 16px;
-        max-width: 460px;
-        margin: 0 auto;
+        right: 22px;
+        bottom: 22px;
         z-index: 70;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 14px;
-        background: var(--ink);
-        color: var(--cream);
-        padding: 11px 11px 11px 20px;
-        border-radius: 16px;
-        box-shadow: 0 14px 34px -10px rgba(46, 32, 24, 0.55);
-        animation: pop 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.2);
-      }
-      .cart-bar[hidden] {
-        display: none;
-      }
-      .cart-meta {
-        display: flex;
-        flex-direction: column;
-        line-height: 1.25;
-      }
-      .cart-meta b {
-        font-size: 15px;
-      }
-      .cart-meta span {
-        font-size: 13px;
-        color: var(--tan);
-        font-variant-numeric: tabular-nums;
-      }
-      .cart-go {
+        width: 56px;
+        height: 56px;
+        display: grid;
+        place-items: center;
         background: var(--terra);
         color: #fff;
         border: none;
-        border-radius: 999px;
-        padding: 11px 20px;
-        font-weight: 600;
-        font-family: var(--sans);
-        font-size: 14.5px;
+        border-radius: 50%;
         cursor: pointer;
-        white-space: nowrap;
-        transition: background 0.2s;
+        box-shadow: 0 12px 28px -6px rgba(46, 32, 24, 0.55);
+        animation: pop 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+        transition:
+          background 0.2s,
+          transform 0.12s;
       }
-      .cart-go:hover {
+      .cart-fab[hidden] {
+        display: none;
+      }
+      .cart-fab:hover {
         background: var(--terra-deep);
       }
-      body.has-cart {
-        padding-bottom: 76px;
+      .cart-fab:active {
+        transform: scale(0.93);
       }
+      .cart-fab svg {
+        width: 26px;
+        height: 26px;
+      }
+      .cart-fab-badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        min-width: 22px;
+        height: 22px;
+        padding: 0 6px;
+        display: grid;
+        place-items: center;
+        background: var(--ink);
+        color: #fff;
+        border: 2px solid var(--cream);
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+      }
+      /* khi có giỏ: đẩy nút "lên đầu" lên trên nút giỏ */
       body.has-cart .to-top {
-        bottom: 86px;
+        bottom: 90px;
       }
 
       /* ===== TỔNG HỢP ĐƠN TRONG POPUP ===== */
@@ -1716,14 +1712,28 @@
       </svg>
     </button>
 
-    <!-- THANH GIỎ CHỌN MÓN -->
-    <div id="cart-bar" class="cart-bar" hidden>
-      <div class="cart-meta">
-        <b id="cart-count">0 món</b>
-        <span id="cart-total">0đ</span>
-      </div>
-      <button class="cart-go" type="button" data-order>Đặt hàng →</button>
-    </div>
+    <!-- NÚT GIỎ HÀNG (mở popup đặt) -->
+    <button
+      id="cart-fab"
+      class="cart-fab"
+      type="button"
+      data-order
+      hidden
+      aria-label="Xem giỏ và đặt hàng"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        aria-hidden="true"
+      >
+        <circle cx="9" cy="20" r="1.5" />
+        <circle cx="18" cy="20" r="1.5" />
+        <path d="M2.5 3h2.6l2.2 11.4a1.6 1.6 0 001.6 1.3h8.1a1.6 1.6 0 001.6-1.3L20.5 7H6.2" />
+      </svg>
+      <span class="cart-fab-badge" id="cart-count">0</span>
+    </button>
 
     <!-- POPUP ĐẶT HÀNG -->
     <div id="order-modal" class="modal" hidden>
@@ -2358,16 +2368,18 @@
       }
       render();
 
-      /* ---------- giỏ: thanh đáy + text đơn + toast ---------- */
+      /* ---------- giỏ: nút nổi + text đơn + toast ---------- */
       function updateCartBar() {
-        const bar = document.getElementById("cart-bar");
-        if (!bar) return;
+        const fab = document.getElementById("cart-fab");
+        if (!fab) return;
         const items = Object.values(cart);
         const count = items.reduce((s, i) => s + i.qty, 0);
-        const total = items.reduce((s, i) => s + i.qty * i.price, 0);
-        document.getElementById("cart-count").textContent = count + " món";
-        document.getElementById("cart-total").textContent = vnd(total);
-        bar.hidden = count === 0;
+        document.getElementById("cart-count").textContent = count;
+        fab.hidden = count === 0;
+        fab.setAttribute(
+          "aria-label",
+          `Xem giỏ và đặt hàng — ${count} món`,
+        );
         document.body.classList.toggle("has-cart", count > 0);
       }
       function orderText() {
