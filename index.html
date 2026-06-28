@@ -1082,6 +1082,35 @@
         text-align: center;
         padding: 6px 0 4px;
       }
+      .order-note-label {
+        display: block;
+        text-align: left;
+        font-size: 12.5px;
+        font-weight: 600;
+        color: var(--ink-2);
+        margin-bottom: 6px;
+      }
+      .order-note {
+        width: 100%;
+        font-family: var(--sans);
+        font-size: 14px;
+        color: var(--ink);
+        background: var(--card);
+        border: 1.5px solid var(--card-edge);
+        border-radius: 12px;
+        padding: 10px 12px;
+        resize: vertical;
+        min-height: 46px;
+        margin-bottom: 14px;
+        transition: border-color 0.2s;
+      }
+      .order-note::placeholder {
+        color: var(--ink-3);
+      }
+      .order-note:focus {
+        outline: none;
+        border-color: var(--terra);
+      }
       .copy-btn {
         width: 100%;
         font-family: var(--sans);
@@ -1648,6 +1677,13 @@
           Copy danh sách rồi gửi cho cửa hàng nhé.
         </p>
         <div id="order-summary" class="order-summary"></div>
+        <label for="order-note" class="order-note-label">Ghi chú cho cửa hàng</label>
+        <textarea
+          id="order-note"
+          class="order-note"
+          rows="2"
+          placeholder="VD: không ăn được rau, ít cay, không hành…"
+        ></textarea>
         <button id="copy-order" class="copy-btn" type="button">
           📋 Copy danh sách món
         </button>
@@ -2212,7 +2248,10 @@
           (i) => `• ${i.name} x${i.qty} = ${vnd(i.qty * i.price)}`,
         );
         const total = items.reduce((s, i) => s + i.qty * i.price, 0);
-        return `ĐƠN HÀNG HEHI\n${lines.join("\n")}\n———\nTổng: ${vnd(total)}`;
+        const noteEl = document.getElementById("order-note");
+        const note = noteEl ? noteEl.value.trim() : "";
+        const noteLine = note ? `\nGhi chú: ${note}` : "";
+        return `ĐƠN HÀNG HEHI\n${lines.join("\n")}\n———\nTổng: ${vnd(total)}${noteLine}`;
       }
       function toast(msg) {
         let t = document.getElementById("toast");
