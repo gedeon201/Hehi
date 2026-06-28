@@ -386,6 +386,49 @@
         margin-top: 44px;
       }
 
+      /* ===== Ô TÌM KIẾM ===== */
+      .menu-search {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 4px;
+      }
+      .menu-search svg {
+        position: absolute;
+        left: 16px;
+        width: 19px;
+        height: 19px;
+        color: var(--ink-3);
+        pointer-events: none;
+      }
+      .menu-search input {
+        width: 100%;
+        font-family: var(--sans);
+        font-size: 15px;
+        color: var(--ink);
+        background: var(--card);
+        border: 1.5px solid var(--card-edge);
+        border-radius: 999px;
+        padding: 12px 18px 12px 44px;
+        transition: border-color 0.2s;
+      }
+      .menu-search input::placeholder {
+        color: var(--ink-3);
+      }
+      .menu-search input:focus {
+        outline: none;
+        border-color: var(--terra);
+      }
+      .menu-empty {
+        text-align: center;
+        color: var(--ink-2);
+        font-size: 15px;
+        padding: 40px 0;
+      }
+      .menu-empty[hidden] {
+        display: none;
+      }
+
       /* ===== FILTER CHIPS (dính dưới nav) ===== */
       .menu-filter {
         position: sticky;
@@ -1076,6 +1119,13 @@
         color: var(--terra-deep);
         font-size: 19px;
       }
+      .sum-note {
+        text-align: right;
+        font-size: 12.5px;
+        font-style: italic;
+        color: var(--ink-3);
+        margin-top: 6px;
+      }
       .sum-empty {
         color: var(--ink-2);
         font-size: 14.5px;
@@ -1498,6 +1548,19 @@
           <h2>Các món của Hehi</h2>
           <p>Giá đã bao gồm topping. Chạm “Đặt” để chọn cách đặt hàng.</p>
         </div>
+        <div class="menu-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M21 21l-4.3-4.3" />
+          </svg>
+          <input
+            id="menu-search"
+            type="search"
+            placeholder="Tìm món theo tên…"
+            aria-label="Tìm món theo tên"
+            autocomplete="off"
+          />
+        </div>
         <div
           id="menu-filter"
           class="menu-filter"
@@ -1505,6 +1568,9 @@
           aria-label="Lọc theo danh mục"
         ></div>
         <div id="menu-root"></div>
+        <p id="menu-empty" class="menu-empty" hidden>
+          Không tìm thấy món nào khớp “<span id="menu-empty-q"></span>”.
+        </p>
       </div>
     </section>
 
@@ -2133,7 +2199,7 @@
         const star = it.star
           ? ' <span class="star" title="Món nổi bật" aria-label="Món nổi bật">★</span>'
           : "";
-        return `<article class="item-card">
+        return `<article class="item-card" data-name="${it.name}">
     <div class="item-photo">${photo}</div>
     <div class="item-body">
       <h3>${it.name}${star}</h3>
@@ -2150,7 +2216,7 @@
         const photo = it.photo
           ? `<img src="${it.photo}" alt="${it.name}" loading="lazy" decoding="async">`
           : `<div class="ph drink"><div class="glass" style="color:${color}">${glassSVG}</div><div class="lbl">Ảnh ly</div></div>`;
-        return `<article class="item-card">
+        return `<article class="item-card" data-name="${it.name}">
     <div class="item-photo">${photo}</div>
     <div class="item-body">
       <h3>${it.name}</h3>
@@ -2179,18 +2245,62 @@
           .concat(MENU.map((g, i) => chip(i, g.cat, g.items.length, false)))
           .join("");
 
+        const search = document.getElementById("menu-search");
+        const empty = document.getElementById("menu-empty");
+        const emptyQ = document.getElementById("menu-empty-q");
+        // bỏ dấu để tìm "khoan dung" (gõ có dấu hay không đều ra)
+        const norm = (s) =>
+          s
+            .normalize("NFD")
+            .replace(/[̀-ͯ]/g, "")
+            .replace(/đ/g, "d")
+            .replace(/Đ/g, "D")
+            .toLowerCase()
+            .trim();
+
+        // áp dụng lọc theo danh mục (khi KHÔNG tìm kiếm)
+        function applyCategory(sel) {
+          root.querySelectorAll(".cat-block").forEach((b) => {
+            b.hidden = !(sel === "all" || b.dataset.cat === sel);
+            b.querySelectorAll(".item-card").forEach((c) => (c.hidden = false));
+          });
+          empty.hidden = true;
+        }
+
+        // áp dụng tìm kiếm theo tên (xuyên mọi danh mục)
+        function applySearch(q) {
+          const query = norm(q);
+          if (!query) {
+            const active = bar.querySelector('.chip[aria-selected="true"]');
+            applyCategory(active ? active.dataset.cat : "all");
+            return;
+          }
+          let any = false;
+          root.querySelectorAll(".cat-block").forEach((b) => {
+            let hit = false;
+            b.querySelectorAll(".item-card").forEach((c) => {
+              const match = norm(c.dataset.name || "").includes(query);
+              c.hidden = !match;
+              if (match) hit = true;
+            });
+            b.hidden = !hit;
+            if (hit) any = true;
+          });
+          emptyQ.textContent = q.trim();
+          empty.hidden = any;
+        }
+
         bar.addEventListener("click", (e) => {
           const btn = e.target.closest(".chip");
           if (!btn) return;
           const sel = btn.dataset.cat;
+          if (search) search.value = ""; // bấm danh mục thì xoá tìm kiếm
           bar
             .querySelectorAll(".chip")
             .forEach((c) =>
               c.setAttribute("aria-selected", c === btn ? "true" : "false"),
             );
-          root.querySelectorAll(".cat-block").forEach((b) => {
-            b.hidden = !(sel === "all" || b.dataset.cat === sel);
-          });
+          applyCategory(sel);
           // canh chip đang chọn vào giữa thanh lọc (mobile/tablet)
           const cx = btn.offsetLeft - (bar.clientWidth - btn.offsetWidth) / 2;
           bar.scrollTo({ left: cx, behavior: "smooth" });
@@ -2199,6 +2309,25 @@
           for (let el = bar; el; el = el.offsetParent) y += el.offsetTop;
           window.scrollTo({ top: y - 64, behavior: "smooth" });
         });
+
+        if (search) {
+          search.addEventListener("input", () => {
+            // khi đang tìm thì bỏ chọn mọi chip cho rõ là tìm xuyên danh mục
+            if (norm(search.value)) {
+              bar
+                .querySelectorAll(".chip")
+                .forEach((c) => c.setAttribute("aria-selected", "false"));
+            } else {
+              const all = bar.querySelector('.chip[data-cat="all"]');
+              bar
+                .querySelectorAll(".chip")
+                .forEach((c) =>
+                  c.setAttribute("aria-selected", c === all ? "true" : "false"),
+                );
+            }
+            applySearch(search.value);
+          });
+        }
       }
 
       function render() {
@@ -2251,7 +2380,7 @@
         const noteEl = document.getElementById("order-note");
         const note = noteEl ? noteEl.value.trim() : "";
         const noteLine = note ? `\nGhi chú: ${note}` : "";
-        return `ĐƠN HÀNG HEHI\n${lines.join("\n")}\n———\nTổng: ${vnd(total)}${noteLine}`;
+        return `ĐƠN HÀNG HEHI\n${lines.join("\n")}\n———\nTổng: ${vnd(total)} (chưa gồm phí ship)${noteLine}`;
       }
       function toast(msg) {
         let t = document.getElementById("toast");
@@ -2296,7 +2425,8 @@
                   </div>`,
               )
               .join("") +
-            `<div class="sum-total"><span>Tổng cộng</span><b>${vnd(total)}</b></div>`;
+            `<div class="sum-total"><span>Tổng cộng</span><b>${vnd(total)}</b></div>` +
+            `<p class="sum-note">* Giá chưa bao gồm phí ship.</p>`;
           copyBtn.hidden = false;
           orderSub.textContent = "Copy danh sách rồi gửi qua Facebook nhé.";
         } else {
