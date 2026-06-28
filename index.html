@@ -52,6 +52,12 @@
         color: inherit;
         text-decoration: none;
       }
+      /* chặn double-tap phóng to (bug zoom khi bấm nhanh +/-) */
+      button,
+      .order-opt,
+      a {
+        touch-action: manipulation;
+      }
       img {
         display: block;
         max-width: 100%;
@@ -884,6 +890,32 @@
         font-weight: 700;
         font-variant-numeric: tabular-nums;
       }
+      .step,
+      .step-add,
+      .sum-del,
+      .cart-go {
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      .sum-del {
+        flex: none;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        border: none;
+        background: transparent;
+        color: var(--ink-3);
+        font-size: 22px;
+        line-height: 1;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        transition: all 0.15s;
+      }
+      .sum-del:hover {
+        background: rgba(168, 81, 47, 0.12);
+        color: var(--terra-deep);
+      }
 
       /* ===== THANH GIỎ ĐÁY ===== */
       .cart-bar {
@@ -949,10 +981,11 @@
         text-align: left;
         margin: 6px 0 14px;
         overflow-y: auto;
-        max-height: 240px;
-        flex-shrink: 1;
+        flex: 1 1 auto;
+        min-height: 0;
         padding-right: 4px;
         overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
       }
       .order-summary::-webkit-scrollbar {
         width: 6px;
@@ -1559,8 +1592,8 @@
    - price: số tiền (đồng)
    ============================================================ */
       const SHOP = {
-        phone: "0964748460", // số gọi & hiển thị
-        messenger: "https://www.facebook.com/shiandbo202", // link trang Facebook
+        phone: "0963382918", // số gọi & hiển thị
+        messenger: "https://www.facebook.com/share/1J7Tayzp4H/?mibextid=wwXIfr", // link trang Facebook
         address: "Ngọc Bộ - Nghĩa Trụ - Hưng Yên",
         hours: "8:00 – 22:00 mỗi ngày",
       };
@@ -2058,6 +2091,7 @@
               .map(
                 (i) =>
                   `<div class="sum-row">
+                    <button class="sum-del" type="button" data-del="${i.name}" aria-label="Xoá ${i.name}">×</button>
                     <span class="sum-n">${i.name}</span>
                     <div class="sum-controls">
                       <div class="stepper" data-name="${i.name}" data-price="${i.price}">
@@ -2112,6 +2146,14 @@
           }
           toast("Đã copy danh sách món ✓");
         });
+      // đồng bộ mọi stepper cùng món (trên card + trong popup)
+      function syncSteppers(name) {
+        const sel =
+          '.stepper[data-name="' + name.replace(/(["\\])/g, "\\$1") + '"]';
+        document
+          .querySelectorAll(sel)
+          .forEach((s) => (s.innerHTML = stepperHTML(qtyOf(name))));
+      }
       document.addEventListener("click", (e) => {
         // tăng/giảm số lượng ngay trên card hoặc trong popup
         const stepBtn = e.target.closest(".stepper button");
@@ -2121,6 +2163,19 @@
           const price = Number(box.dataset.price);
           const next = qtyOf(name) + (stepBtn.dataset.act === "inc" ? 1 : -1);
           setQty(name, price, next);
+          syncSteppers(name);
+          if (!modal.hidden) renderOrderSummary();
+          return;
+        }
+        // xoá hẳn 1 món khỏi giỏ (nút ✕ trong popup)
+        const del = e.target.closest("[data-del]");
+        if (del) {
+          const name = del.dataset.del;
+          delete cart[name];
+          saveCart();
+          updateCartBar();
+          syncSteppers(name);
+          renderOrderSummary();
           return;
         }
         // xoá hết giỏ (nút trong popup)
