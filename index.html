@@ -1213,8 +1213,18 @@
           height="10"
           patternUnits="userSpaceOnUse"
         >
-          <path d="M0,10 L10,0" stroke="#7A4A2B" stroke-width="1" opacity="0.3" />
-          <path d="M0,0 L10,10" stroke="#7A4A2B" stroke-width="1" opacity="0.3" />
+          <path
+            d="M0,10 L10,0"
+            stroke="#7A4A2B"
+            stroke-width="1"
+            opacity="0.3"
+          />
+          <path
+            d="M0,0 L10,10"
+            stroke="#7A4A2B"
+            stroke-width="1"
+            opacity="0.3"
+          />
         </pattern>
         <!-- biểu tượng bánh tráng (logo) -->
         <g id="disc">
@@ -1230,13 +1240,50 @@
           />
           <!-- hạt mè -->
           <g clip-path="url(#cc)" fill="#5C3A21">
-            <ellipse cx="38" cy="40" rx="2.6" ry="1.4" transform="rotate(-20 38 40)" />
-            <ellipse cx="64" cy="44" rx="2.6" ry="1.4" transform="rotate(30 64 44)" />
-            <ellipse cx="50" cy="64" rx="2.6" ry="1.4" transform="rotate(-10 50 64)" />
-            <ellipse cx="66" cy="66" rx="2.4" ry="1.3" transform="rotate(15 66 66)" />
-            <ellipse cx="34" cy="62" rx="2.4" ry="1.3" transform="rotate(40 34 62)" />
+            <ellipse
+              cx="38"
+              cy="40"
+              rx="2.6"
+              ry="1.4"
+              transform="rotate(-20 38 40)"
+            />
+            <ellipse
+              cx="64"
+              cy="44"
+              rx="2.6"
+              ry="1.4"
+              transform="rotate(30 64 44)"
+            />
+            <ellipse
+              cx="50"
+              cy="64"
+              rx="2.6"
+              ry="1.4"
+              transform="rotate(-10 50 64)"
+            />
+            <ellipse
+              cx="66"
+              cy="66"
+              rx="2.4"
+              ry="1.3"
+              transform="rotate(15 66 66)"
+            />
+            <ellipse
+              cx="34"
+              cy="62"
+              rx="2.4"
+              ry="1.3"
+              transform="rotate(40 34 62)"
+            />
           </g>
-          <circle cx="50" cy="50" r="46" fill="none" stroke="#C75B39" stroke-width="2" />
+          <circle
+            cx="50"
+            cy="50"
+            r="46"
+            fill="none"
+            stroke="#C75B39"
+            stroke-width="2"
+          />
         </g>
         <!-- ly đồ uống: màu nước = currentColor (đặt qua style color của card) -->
         <symbol id="glass" viewBox="0 0 80 104">
@@ -1246,37 +1293,67 @@
             fill="currentColor"
           />
           <!-- ánh nước trên mặt -->
-          <path d="M20 40 L62 40 L61.4 46 L20.6 46 Z" fill="#fff" opacity=".22" />
+          <path
+            d="M20 40 L62 40 L61.4 46 L20.6 46 Z"
+            fill="#fff"
+            opacity=".22"
+          />
           <!-- đá -->
           <rect
-            x="25" y="48" width="15" height="15" rx="3"
-            fill="#fff" opacity=".42"
+            x="25"
+            y="48"
+            width="15"
+            height="15"
+            rx="3"
+            fill="#fff"
+            opacity=".42"
             transform="rotate(-12 32 55)"
           />
           <rect
-            x="40" y="58" width="14" height="14" rx="3"
-            fill="#fff" opacity=".34"
+            x="40"
+            y="58"
+            width="14"
+            height="14"
+            rx="3"
+            fill="#fff"
+            opacity=".34"
             transform="rotate(11 47 65)"
           />
           <rect
-            x="30" y="68" width="12" height="12" rx="3"
-            fill="#fff" opacity=".3"
+            x="30"
+            y="68"
+            width="12"
+            height="12"
+            rx="3"
+            fill="#fff"
+            opacity=".3"
             transform="rotate(18 36 74)"
           />
           <!-- thành ly -->
           <path
             d="M16 12 L64 12 L58 90 Q57 95 52 95 L28 95 Q23 95 22 90 Z"
-            fill="none" stroke="#C98B5E" stroke-width="2"
+            fill="none"
+            stroke="#C98B5E"
+            stroke-width="2"
           />
           <!-- miệng ly -->
           <ellipse
-            cx="40" cy="12" rx="24" ry="4.6"
-            fill="#fff" fill-opacity=".5"
-            stroke="#C98B5E" stroke-width="2"
+            cx="40"
+            cy="12"
+            rx="24"
+            ry="4.6"
+            fill="#fff"
+            fill-opacity=".5"
+            stroke="#C98B5E"
+            stroke-width="2"
           />
           <!-- ống hút -->
           <rect
-            x="44" y="-2" width="7" height="58" rx="3.5"
+            x="44"
+            y="-2"
+            width="7"
+            height="58"
+            rx="3.5"
             fill="#C2674A"
             transform="rotate(14 47 27)"
           />
@@ -1392,7 +1469,12 @@
           <h2>Các món của Hehi</h2>
           <p>Giá đã bao gồm topping. Chạm “Đặt” để chọn cách đặt hàng.</p>
         </div>
-        <div id="menu-filter" class="menu-filter" role="tablist" aria-label="Lọc theo danh mục"></div>
+        <div
+          id="menu-filter"
+          class="menu-filter"
+          role="tablist"
+          aria-label="Lọc theo danh mục"
+        ></div>
         <div id="menu-root"></div>
       </div>
     </section>
@@ -1523,8 +1605,18 @@
     </section>
 
     <!-- NÚT LÊN ĐẦU DANH SÁCH -->
-    <button id="to-top" class="to-top" type="button" aria-label="Lên đầu danh sách món">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <button
+      id="to-top"
+      class="to-top"
+      type="button"
+      aria-label="Lên đầu danh sách món"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
         <path d="M12 19V5M5 12l7-7 7 7" />
       </svg>
     </button>
@@ -1541,27 +1633,58 @@
     <!-- POPUP ĐẶT HÀNG -->
     <div id="order-modal" class="modal" hidden>
       <div class="modal-overlay" data-close></div>
-      <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="order-title">
-        <button class="modal-x" type="button" data-close aria-label="Đóng">&times;</button>
+      <div
+        class="modal-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="order-title"
+      >
+        <button class="modal-x" type="button" data-close aria-label="Đóng">
+          &times;
+        </button>
         <div class="eyebrow" style="margin-bottom: 8px">Đặt hàng</div>
         <h3 id="order-title" class="modal-title">Đơn hàng của bạn</h3>
-        <p class="modal-sub" id="order-sub">Copy danh sách rồi gửi cho cửa hàng nhé.</p>
+        <p class="modal-sub" id="order-sub">
+          Copy danh sách rồi gửi cho cửa hàng nhé.
+        </p>
         <div id="order-summary" class="order-summary"></div>
         <button id="copy-order" class="copy-btn" type="button">
           📋 Copy danh sách món
         </button>
         <div class="modal-actions">
-          <a id="m-fb" class="order-opt fb" href="#" target="_blank" rel="noopener">
+          <a
+            id="m-fb"
+            class="order-opt fb"
+            href="#"
+            target="_blank"
+            rel="noopener"
+          >
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2C6.5 2 2 6.1 2 11.2c0 2.9 1.4 5.5 3.7 7.2V22l3.4-1.9c.9.3 1.9.4 2.9.4 5.5 0 10-4.1 10-9.3S17.5 2 12 2zm1 12.5l-2.6-2.7-5 2.7 5.4-5.7 2.6 2.7 4.9-2.7-5.3 5.7z" />
+              <path
+                d="M12 2C6.5 2 2 6.1 2 11.2c0 2.9 1.4 5.5 3.7 7.2V22l3.4-1.9c.9.3 1.9.4 2.9.4 5.5 0 10-4.1 10-9.3S17.5 2 12 2zm1 12.5l-2.6-2.7-5 2.7 5.4-5.7 2.6 2.7 4.9-2.7-5.3 5.7z"
+              />
             </svg>
-            <span><span class="k">Nhắn đặt qua</span><br /><b>Facebook</b></span>
+            <span
+              ><span class="k">Nhắn đặt qua</span><br /><b>Facebook</b></span
+            >
           </a>
           <a id="m-phone" class="order-opt phone" href="#">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
-              <path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" />
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              aria-hidden="true"
+            >
+              <path
+                d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"
+              />
             </svg>
-            <span><span class="k">Gọi điện đặt</span><br /><b id="m-phone-num">0964 748 460</b></span>
+            <span
+              ><span class="k">Gọi điện đặt</span><br /><b id="m-phone-num"
+                >0964 748 460</b
+              ></span
+            >
           </a>
         </div>
       </div>
@@ -1606,12 +1729,12 @@
               name: "Nướng Truyền Thống",
               desc: "Trứng, hành, ruốc — nướng giòn thơm.",
               price: 30000,
-              photo: "",
+              photo: "assets/images/banh_trang_nuong_truyen_thong.webp",
             },
             {
               name: "Nướng Đặc Biệt",
               desc: "Đầy đủ topping: trứng, xúc xích, phô mai, mỡ hành.",
-              price: 30000,
+              price: 35000,
               photo: "assets/images/banh-trang-nuong.webp",
             },
           ],
@@ -1623,13 +1746,13 @@
               name: "Nướng Muối Ớt",
               desc: "Bánh mì nướng muối ớt cay, mỡ hành.",
               price: 30000,
-              photo: "",
+              photo: "assets/images/nuong_muoi_ot.webp",
             },
             {
               name: "Nướng Muối Ớt Full Topping",
               desc: "Muối ớt cay kèm full topping đầy đặn.",
               price: 35000,
-              photo: "",
+              photo: "assets/images/banh_mi_nuong_full_toping.webp",
             },
           ],
         },
@@ -1641,13 +1764,13 @@
               desc: "Vị chấm cô gánh đặc trưng, ăn là ghiền.",
               price: 30000,
               star: true,
-              photo: "",
+              photo: "assets/images/cham_co_ganh.webp",
             },
             {
               name: "Chấm Sốt Tắc Cay",
               desc: "Sốt tắc chua cay, kèm topping.",
               price: 30000,
-              photo: "",
+              photo: "assets/images/cham_tac_cay.webp",
             },
           ],
         },
@@ -1663,14 +1786,14 @@
             {
               name: "Combo Cuộn",
               desc: "Tổng hợp các món cuộn được yêu thích.",
-              price: 90000,
-              photo: "",
+              price: 75000,
+              photo: "assets/images/combo_75k.webp",
             },
             {
               name: "Combo Đặc Biệt",
               desc: "Phần đặc biệt cho 2–3 người.",
-              price: 75000,
-              photo: "",
+              price: 90000,
+              photo: "assets/images/combo_dac_biet.webp",
             },
             {
               name: "Khay Mix Vị",
@@ -1692,8 +1815,8 @@
             {
               name: "Sate Bò / Tép",
               desc: "Sa tế bò hoặc tép — cay đậm đà.",
-              price: 30000,
-              photo: "",
+              price: 35000,
+              photo: "assets/images/sate_bo_tep.webp",
             },
             {
               name: "Full Topping",
@@ -1726,13 +1849,13 @@
               desc: "Phơi sương trộn tắc tươi, hành phi giòn.",
               price: 30000,
               star: true,
-              photo: "",
+              photo: "assets/images/phoi_suong_tron_tac_hanh_phi.webp",
             },
             {
               name: "Phơi sương trộn mỡ hành",
               desc: "Phơi sương trộn mỡ hành béo thơm.",
               price: 30000,
-              photo: "",
+              photo: "assets/images/phoi_suong_tron_mo_hanh.webp",
             },
           ],
         },
@@ -1740,23 +1863,30 @@
           cat: "Bánh tráng cuộn",
           items: [
             {
+              name: "Cuộn Trứng Lòng Đào",
+              desc: "Cuộn trứng lòng đào béo bùi, tan trong miệng.",
+              price: 40000,
+              star: true,
+              photo: "assets/images/cuon_trung_long_dao.webp",
+            },
+            {
               name: "Sốt Me",
               desc: "Cuộn chấm sốt me chua ngọt.",
               price: 30000,
-              photo: "",
+              photo: "assets/images/sot_me.webp",
             },
             {
               name: "Sốt Kim Quất",
               desc: "Cuộn sốt kim quất chua thanh.",
               price: 30000,
-              photo: "",
+              photo: "assets/images/sot_kim_quat.webp",
             },
             {
               name: "Sốt Kiều Mạch Chesse",
               desc: "Cuộn kiều mạch sốt phô mai béo.",
               price: 30000,
               star: true,
-              photo: "",
+              photo: "assets/images/kieu_mach_chese.webp",
             },
             {
               name: "Sốt Hoa Quả",
@@ -1775,7 +1905,7 @@
               desc: "Cuộn phô mai cam đào thơm béo.",
               price: 35000,
               star: true,
-              photo: "",
+              photo: "assets/images/sot_pho_mai_cam_dao.webp",
             },
             {
               name: "Sốt Xí Muội Cay",
@@ -1788,19 +1918,25 @@
               name: "Phơi sương cuộn muối bò",
               desc: "Phơi sương cuộn muối bò đậm vị.",
               price: 33000,
-              photo: "",
+              photo: "assets/images/cuon_lac_muoi_bo.webp",
+            },
+            {
+              name: "Cuộn Hột Tây Ninh",
+              desc: "Cuộn đặc sản Tây Ninh, dẻo thơm.",
+              price: 35000,
+              photo: "assets/images/cuon_hot_tay_ninh.webp",
             },
             {
               name: "Hoàng Kim Chà Bông",
               desc: "Cuộn hoàng kim phủ chà bông.",
               price: 35000,
-              photo: "",
+              photo: "assets/images/hoang_kim_cha_bong.webp",
             },
             {
               name: "Sốt nava trứng muối",
               desc: "Cuộn sốt nava trứng muối béo.",
               price: 33000,
-              photo: "",
+              photo: "assets/images/sot_nava_trung_muoi.webp",
             },
             {
               name: "Sốt muối béo",
@@ -1817,14 +1953,14 @@
             {
               name: "Phomai Cam Đào Chà Bông",
               desc: "Phô mai cam đào kèm chà bông.",
-              price: 35000,
-              photo: "",
+              price: 40000,
+              photo: "assets/images/pho_mai_cam_dao_cha_bong.webp",
             },
             {
               name: "Rong Biển Sốt Phomai Cay",
               desc: "Rong biển sốt phô mai cay nồng.",
               price: 35000,
-              photo: "",
+              photo: "assets/images/rong_bien_sot_pho_mai.webp",
             },
             {
               name: "Bánh Tráng Phơi Sương Cuộn Tóp Mỡ",
@@ -1916,9 +2052,11 @@
         updateCartBar();
 
         // Cập nhật tất cả bộ stepper ngoài trang chủ
-        document.querySelectorAll(`.stepper[data-name="${name}"]`).forEach((s) => {
-          s.innerHTML = stepperHTML(qtyOf(name));
-        });
+        document
+          .querySelectorAll(`.stepper[data-name="${name}"]`)
+          .forEach((s) => {
+            s.innerHTML = stepperHTML(qtyOf(name));
+          });
 
         // Nếu popup đơn hàng đang mở, vẽ lại danh sách tóm tắt
         if (typeof modal !== "undefined" && modal && !modal.hidden) {
@@ -2025,7 +2163,10 @@
         ).join("");
 
         // contact wiring
-        const fmtPhone = SHOP.phone.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
+        const fmtPhone = SHOP.phone.replace(
+          /(\d{4})(\d{3})(\d{3})/,
+          "$1 $2 $3",
+        );
         const tel = "tel:" + SHOP.phone.replace(/\D/g, "");
         document.getElementById("c-phone").href = tel;
         document.getElementById("v-phone").textContent = fmtPhone;
@@ -2232,7 +2373,10 @@
         const el = id ? document.getElementById(id) : null;
         if (!el) return;
         e.preventDefault();
-        const y = id === "top" ? 0 : el.getBoundingClientRect().top + window.scrollY - 64;
+        const y =
+          id === "top"
+            ? 0
+            : el.getBoundingClientRect().top + window.scrollY - 64;
         window.scrollTo({ top: y, behavior: "smooth" });
       });
       // tải trang: bỏ hash cũ còn sót và luôn bắt đầu từ đầu trang
@@ -2240,6 +2384,10 @@
         history.replaceState(null, "", location.pathname + location.search);
         window.scrollTo(0, 0);
       }
+      // chống nhảy cuộn khi refresh / kéo-làm-mới trên mobile (kể cả khôi phục từ bộ nhớ đệm)
+      window.addEventListener("pageshow", () => {
+        if (!location.hash) window.scrollTo(0, 0);
+      });
     </script>
   </body>
 </html>
