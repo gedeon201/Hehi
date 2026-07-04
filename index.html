@@ -657,20 +657,64 @@
         margin-bottom: 14px;
       }
 
-      /* ===== CONTACT (đưa lên đầu thực đơn) ===== */
+      /* ===== CONTACT gọn (đầu thực đơn) ===== */
       .menu-contact {
-        text-align: center;
-        margin-bottom: 30px;
-      }
-      .menu-contact .channels {
         display: flex;
-        gap: 14px;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 4px;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin: -8px 0 30px;
       }
-      .menu-contact .info {
-        margin-top: 16px;
+      .clinks {
+        display: inline-flex;
+        gap: 12px;
+      }
+      .clink {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        border: 1.5px solid var(--card-edge);
+        background: var(--card);
+        color: var(--terra);
+        transition:
+          background 0.2s,
+          color 0.2s,
+          border-color 0.2s,
+          transform 0.2s;
+      }
+      .clink:hover {
+        background: var(--terra);
+        border-color: var(--terra);
+        color: #fff;
+        transform: translateY(-2px);
+      }
+      .clink:focus-visible {
+        outline: 2px solid var(--terra-deep);
+        outline-offset: 2px;
+      }
+      .clink svg {
+        width: 20px;
+        height: 20px;
+      }
+      .cmeta {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 6px 18px;
+        font-size: 13.5px;
+        color: var(--ink-2);
+      }
+      .cmeta b {
+        color: var(--ink);
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+      }
+      .cmeta span span {
+        color: var(--ink);
+        font-weight: 500;
       }
       .chan {
         display: flex;
@@ -1470,67 +1514,31 @@
           <h2>Các món của Hehi</h2>
         </div>
         <div id="contact" class="menu-contact">
-          <div class="channels">
-            <a class="chan" id="c-phone" href="#">
-              <svg
-                class="ci"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-              >
+          <div class="clinks">
+            <a class="clink" id="c-phone" href="#" title="Gọi điện" aria-label="Gọi điện">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
                 <path
                   d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"
                 />
               </svg>
-              <span
-                ><span class="k">Gọi điện</span><br /><span
-                  class="v"
-                  id="v-phone"
-                  >0900 000 000</span
-                ></span
-              >
             </a>
-            <a class="chan" id="c-fb" href="#" target="_blank" rel="noopener">
-              <svg
-                class="ci"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-              >
-                <path
-                  d="M14 8h2V5h-2c-2 0-3 1-3 3v2H9v3h2v6h3v-6h2l1-3h-3V8z"
-                />
+            <a class="clink" id="c-fb" href="#" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                <path d="M14 8h2V5h-2c-2 0-3 1-3 3v2H9v3h2v6h3v-6h2l1-3h-3V8z" />
               </svg>
-              <span
-                ><span class="k">Nhắn Facebook</span><br /><span class="v"
-                  >Trang Hehi</span
-                ></span
-              >
             </a>
-            <a
-              class="chan"
-              id="c-tiktok"
-              href="#"
-              target="_blank"
-              rel="noopener"
-            >
-              <svg class="ci" viewBox="0 0 24 24" fill="currentColor">
+            <a class="clink" id="c-tiktok" href="#" target="_blank" rel="noopener" title="TikTok" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor">
                 <path
                   d="M16.6 3c.3 2.05 1.55 3.5 3.9 3.75v2.6c-1.35.13-2.55-.3-3.85-1.1v5.6a5.55 5.55 0 11-5.55-5.55c.28 0 .55.02.82.06v2.7a2.85 2.85 0 102 2.72V3h2.68z"
                 />
               </svg>
-              <span
-                ><span class="k">TikTok</span><br /><span class="v"
-                  >@hehi</span
-                ></span
-              >
             </a>
           </div>
-          <div class="info">
-            <div>📍 <b id="v-addr">Ngọc Bộ - Nghĩa Trụ - Hưng Yên</b></div>
-            <div>🕙 <b id="v-hours">8:00 – 22:00 mỗi ngày</b></div>
+          <div class="cmeta">
+            <span><b id="v-phone">0900 000 000</b></span>
+            <span>📍 <span id="v-addr">Ngọc Bộ - Nghĩa Trụ - Hưng Yên</span></span>
+            <span>🕙 <span id="v-hours">8:00 – 22:00 mỗi ngày</span></span>
           </div>
         </div>
         <div class="menu-search">
