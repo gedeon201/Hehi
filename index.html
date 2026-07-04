@@ -657,16 +657,20 @@
         margin-bottom: 14px;
       }
 
-      /* ===== CONTACT ===== */
-      .contact {
+      /* ===== CONTACT (đưa lên đầu thực đơn) ===== */
+      .menu-contact {
         text-align: center;
+        margin-bottom: 30px;
       }
-      .contact .channels {
+      .menu-contact .channels {
         display: flex;
-        gap: 16px;
+        gap: 14px;
         justify-content: center;
         flex-wrap: wrap;
-        margin-top: 34px;
+        margin-top: 4px;
+      }
+      .menu-contact .info {
+        margin-top: 16px;
       }
       .chan {
         display: flex;
@@ -1454,85 +1458,7 @@
       </div>
     </header>
 
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <svg class="hero-disc" viewBox="0 0 100 100" aria-hidden="true">
-        <use href="#disc" />
-      </svg>
-      <svg class="hero-disc l" viewBox="0 0 100 100" aria-hidden="true">
-        <use href="#disc" />
-      </svg>
-      <div class="wrap hero-in">
-        <div class="eyebrow">Bánh tráng Sài Gòn</div>
-        <h1 class="wordmark">
-          Heh<span class="i-wrap"
-            ><span class="i-stem"></span
-            ><svg class="tittle" viewBox="0 0 100 100" aria-hidden="true">
-              <use href="#disc" /></svg
-          ></span>
-        </h1>
-        <div class="tagline">Hương vị độc quyền</div>
-        <p class="hero-copy">
-          Bánh tráng trộn, cuốn và chấm làm tươi mỗi ngày — công thức riêng của
-          Hehi, topping đầy đặn, kèm đồ uống pha lạnh đã miệng.
-        </p>
-        <div class="hero-cta">
-          <a href="#menu" class="btn btn-primary">Xem đồ ăn</a>
-          <a href="#drinks" class="btn btn-ghost">Xem đồ uống</a>
-        </div>
-      </div>
-    </section>
-
     <div class="divider"></div>
-
-    <!-- TRUST -->
-    <div class="wrap">
-      <div class="trust">
-        <div class="item">
-          <svg
-            class="ic"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.6"
-          >
-            <path d="M12 2v6M12 8c-3 0-5 2-5 5s2 7 5 7 5-4 5-7-2-5-5-5z" />
-          </svg>
-          <h3>Tươi mỗi ngày</h3>
-          <p>Trộn theo từng phần, nguyên liệu nhập trong ngày.</p>
-        </div>
-        <div class="item">
-          <svg
-            class="ic"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.6"
-          >
-            <path
-              d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 21l-4.9 2.6.9-5.5-4-3.9 5.5-.8z"
-            />
-          </svg>
-          <h3>Công thức độc quyền</h3>
-          <p>Sốt me, muối nhuyễn và topping pha riêng của Hehi.</p>
-        </div>
-        <div class="item">
-          <svg
-            class="ic"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.6"
-          >
-            <path
-              d="M3 7h13v8H3zM16 10h4l1 3v2h-5zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM18 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
-            />
-          </svg>
-          <h3>Gói kỹ, giao xa</h3>
-          <p>Đóng hộp chắc chắn, giữ giòn — gửi tỉnh được.</p>
-        </div>
-      </div>
-    </div>
 
     <div class="divider"></div>
 
@@ -1542,10 +1468,79 @@
         <div class="sec-head">
           <div class="eyebrow">Thực đơn</div>
           <h2>Các món của Hehi</h2>
-          <p>Giá đã bao gồm topping. Chạm “Đặt” để chọn cách đặt hàng.</p>
+        </div>
+        <div id="contact" class="menu-contact">
+          <div class="channels">
+            <a class="chan" id="c-phone" href="#">
+              <svg
+                class="ci"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
+                <path
+                  d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"
+                />
+              </svg>
+              <span
+                ><span class="k">Gọi điện</span><br /><span
+                  class="v"
+                  id="v-phone"
+                  >0900 000 000</span
+                ></span
+              >
+            </a>
+            <a class="chan" id="c-fb" href="#" target="_blank" rel="noopener">
+              <svg
+                class="ci"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
+                <path
+                  d="M14 8h2V5h-2c-2 0-3 1-3 3v2H9v3h2v6h3v-6h2l1-3h-3V8z"
+                />
+              </svg>
+              <span
+                ><span class="k">Nhắn Facebook</span><br /><span class="v"
+                  >Trang Hehi</span
+                ></span
+              >
+            </a>
+            <a
+              class="chan"
+              id="c-tiktok"
+              href="#"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg class="ci" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M16.6 3c.3 2.05 1.55 3.5 3.9 3.75v2.6c-1.35.13-2.55-.3-3.85-1.1v5.6a5.55 5.55 0 11-5.55-5.55c.28 0 .55.02.82.06v2.7a2.85 2.85 0 102 2.72V3h2.68z"
+                />
+              </svg>
+              <span
+                ><span class="k">TikTok</span><br /><span class="v"
+                  >@hehi</span
+                ></span
+              >
+            </a>
+          </div>
+          <div class="info">
+            <div>📍 <b id="v-addr">Ngọc Bộ - Nghĩa Trụ - Hưng Yên</b></div>
+            <div>🕙 <b id="v-hours">8:00 – 22:00 mỗi ngày</b></div>
+          </div>
         </div>
         <div class="menu-search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            aria-hidden="true"
+          >
             <circle cx="11" cy="11" r="7" />
             <path d="M21 21l-4.3-4.3" />
           </svg>
@@ -1644,56 +1639,6 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="section contact" id="contact">
-      <div class="wrap">
-        <div class="sec-head">
-          <div class="eyebrow">Liên hệ &amp; đặt món</div>
-          <h2>Nhắn Hehi một tiếng nhé</h2>
-          <p>Gọi trực tiếp hoặc nhắn Facebook — Hehi gói và giao ngay.</p>
-        </div>
-        <div class="channels">
-          <a class="chan" id="c-phone" href="#">
-            <svg
-              class="ci"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-            >
-              <path
-                d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"
-              />
-            </svg>
-            <span
-              ><span class="k">Gọi điện</span><br /><span class="v" id="v-phone"
-                >0900 000 000</span
-              ></span
-            >
-          </a>
-          <a class="chan" id="c-fb" href="#" target="_blank" rel="noopener">
-            <svg
-              class="ci"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-            >
-              <path d="M14 8h2V5h-2c-2 0-3 1-3 3v2H9v3h2v6h3v-6h2l1-3h-3V8z" />
-            </svg>
-            <span
-              ><span class="k">Nhắn Facebook</span><br /><span class="v"
-                >Trang Hehi</span
-              ></span
-            >
-          </a>
-        </div>
-        <div class="info">
-          <div>📍 <b id="v-addr">Ngọc Bộ - Nghĩa Trụ - Hưng Yên</b></div>
-          <div>🕙 <b id="v-hours">8:00 – 22:00 mỗi ngày</b></div>
-        </div>
-      </div>
-    </section>
 
     <!-- NÚT LÊN ĐẦU DANH SÁCH -->
     <button
@@ -1730,7 +1675,9 @@
       >
         <circle cx="9" cy="20" r="1.5" />
         <circle cx="18" cy="20" r="1.5" />
-        <path d="M2.5 3h2.6l2.2 11.4a1.6 1.6 0 001.6 1.3h8.1a1.6 1.6 0 001.6-1.3L20.5 7H6.2" />
+        <path
+          d="M2.5 3h2.6l2.2 11.4a1.6 1.6 0 001.6 1.3h8.1a1.6 1.6 0 001.6-1.3L20.5 7H6.2"
+        />
       </svg>
       <span class="cart-fab-badge" id="cart-count">0</span>
     </button>
@@ -1753,7 +1700,9 @@
           Copy danh sách rồi gửi cho cửa hàng nhé.
         </p>
         <div id="order-summary" class="order-summary"></div>
-        <label for="order-note" class="order-note-label">Ghi chú cho cửa hàng</label>
+        <label for="order-note" class="order-note-label"
+          >Ghi chú cho cửa hàng</label
+        >
         <textarea
           id="order-note"
           class="order-note"
@@ -1829,6 +1778,7 @@
       const SHOP = {
         phone: "0963382918", // số gọi & hiển thị
         messenger: "https://www.facebook.com/share/1J7Tayzp4H/?mibextid=wwXIfr", // link trang Facebook
+        tiktok: "https://www.tiktok.com/@hehi", // TODO: đổi thành link TikTok thật của quán
         address: "Ngọc Bộ - Nghĩa Trụ - Hưng Yên",
         hours: "8:00 – 22:00 mỗi ngày",
       };
@@ -2358,6 +2308,7 @@
         document.getElementById("c-phone").href = tel;
         document.getElementById("v-phone").textContent = fmtPhone;
         document.getElementById("c-fb").href = SHOP.messenger;
+        document.getElementById("c-tiktok").href = SHOP.tiktok;
         document.getElementById("v-addr").textContent = SHOP.address;
         document.getElementById("v-hours").textContent = SHOP.hours;
 
@@ -2376,10 +2327,7 @@
         const count = items.reduce((s, i) => s + i.qty, 0);
         document.getElementById("cart-count").textContent = count;
         fab.hidden = count === 0;
-        fab.setAttribute(
-          "aria-label",
-          `Xem giỏ và đặt hàng — ${count} món`,
-        );
+        fab.setAttribute("aria-label", `Xem giỏ và đặt hàng — ${count} món`);
         document.body.classList.toggle("has-cart", count > 0);
       }
       function orderText() {
